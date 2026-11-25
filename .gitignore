@@ -1,0 +1,14 @@
+# Локальное: настройки Claude, резервные копии, зависимости и ключи ботов
+.claude/
+backup/
+node_modules/
+.tgcloud/
+.env
+.env.*
+*.log
+Thumbs.db
+desktop.ini
+
+# Телеграм-боты не публикуем
+projects/dysph-money-bot/
+projects/dysph-poster-shop/

@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><title>Your Potential — портфолио</title><link rel="stylesheet" href="style.css?v=24"></head>
+<body><div class="atmosphere" aria-hidden="true"><div class="aureole"></div><canvas id="dust"></canvas></div>
+<header class="topbar" id="topbar">
+  <a class="topbar-logo" href="#top" aria-label="Наверх"><svg viewBox="0 356 1280 484" aria-hidden="true"><image href="complogo.png" width="1280" height="1280"/></svg></a>
+  <nav class="topbar-nav" aria-label="Разделы сайта">
+    <a href="#design">Дизайн</a><a href="#projects">Проекты</a><a href="#more">Ещё немного...</a><a href="#bonus">Бонус</a><a href="#contacts">Контакты</a><a href="#socials">Соц сети</a>
+  </nav>
+</header>
+<main>
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <h1 id="hero-title" class="sr">Your Potential — портфолио разработки</h1>
+  <div class="edition"><button id="fx" aria-pressed="true" aria-label="Анимация">FX ON</button><div class="lang" role="group" aria-label="Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a class="order-button" href="#contacts"><span class="order-text">Заказать</span><span aria-hidden="true">↘</span></a></div>
+  <div class="poster-stage">
+  <!-- Слой 0: живые пиксели (облака, растр, контур логотипа) — рисует pixels.js -->
+  <canvas class="poster-pixels" aria-hidden="true"></canvas>
+  <svg class="poster" viewBox="0 0 1280 1280" xmlns="http://www.w3.org/2000/svg" aria-label="Постер Your Potential с подвесным крюком">
+    <defs>
+      <!-- Слой 1: фон постера без надписей -->
+      <image id="art" href="drafts%20cover/posterwithouttext.png" width="1280" height="1280"/>
+      <!-- Контур крюка с цепочкой, вырезанный из фона -->
+      <clipPath id="tail"><path d="M936 818H982V1036H992V1126H886V1058H936Z"/></clipPath>
+    </defs>
+    <use href="#art" class="layer-base"/>
+    <!-- Пустое место под качающимся крюком -->
+    <path fill="#000" d="M936 818H982V1036H992V1126H886V1058H936Z"/>
+    <!-- Слой 2: свечение лампы -->
+    <ellipse class="glow" cx="720" cy="694" rx="165" ry="72" fill="white" pointer-events="none"/>
+    <!-- Световой миг логотипа при нажатии на крюк: nav.js ставит .is-flashing на .poster-stage -->
+    <g class="logo-flash" pointer-events="none" aria-hidden="true">
+      <defs>
+        <radialGradient id="flash-wide"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".35" stop-color="#fff" stop-opacity=".45"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        <radialGradient id="flash-core"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+      </defs>
+      <ellipse class="flash-wide" cx="720" cy="680" rx="480" ry="230" fill="url(#flash-wide)"/>
+      <ellipse class="flash-core" cx="720" cy="694" rx="200" ry="92" fill="url(#flash-core)"/>
+    </g>
+    <!-- Слой 3: крюк — ссылка к портфолио -->
+    <a href="#design" class="hook" aria-label="Перейти к портфолио" tabindex="0"><title>Потянуть за крюк — к портфолио</title>
+      <g class="swing"><use href="#art" clip-path="url(#tail)"/><ellipse class="ring" cx="940" cy="1088" rx="68" ry="44"/></g>
+      <rect x="870" y="800" width="135" height="335" fill="transparent"/>
+    </a>
+    <!-- Слой 4: надписи. «Your» и «is here» постоянные, второе слово сменяется (words.js), картинки слов — drafts cover/words -->
+    <defs>
+      <!-- Тёмный ореол вокруг букв, чтобы текст читался поверх облаков -->
+      <filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="1280">
+        <feMorphology in="SourceAlpha" operator="dilate" radius="6" result="wide"/>
+        <feGaussianBlur in="wide" stdDeviation="6" result="soft"/>
+        <feComponentTransfer in="soft" result="shade"><feFuncA type="linear" slope="1.6"/></feComponentTransfer>
+        <feFlood flood-color="#000"/><feComposite in2="shade" operator="in" result="shadow"/>
+        <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <!-- «Плавление» при смене слова: масштаб искажения анимирует words.js -->
+      <filter id="melt" filterUnits="userSpaceOnUse" x="0" y="0" width="1280" height="460">
+        <feTurbulence id="melt-noise" type="fractalNoise" baseFrequency=".006 .08" numOctaves="2" seed="3" result="noise"/>
+        <feDisplacementMap id="melt-map" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+    <g class="layer-text" pointer-events="none" aria-hidden="true">
+      <g filter="url(#halo)">
+        <image href="drafts%20cover/text-your.png" width="1280" height="1280"/>
+        <g class="word-slot">
+          <image class="word" data-word="potential" href="drafts%20cover/text-potential.png" width="1280" height="1280"/>
+          <image class="word" data-word="design" href="drafts%20cover/words/design.png" x="172.9" y="165.7" width="1066.2" height="180.7" opacity="0"/>
+          <image class="word" data-word="mini-apps" href="drafts%20cover/words/mini-apps.png" x="16.9" y="180.3" width="1245.1" height="151.3" opacity="0"/>
+          <image class="word" data-word="sites" href="drafts%20cover/words/sites.png" x="273.5" y="191.5" width="865.1" height="129.1" opacity="0"/>
+          <image class="word" data-word="bots" href="drafts%20cover/words/bots.png" x="328.6" y="181.2" width="754.7" height="149.5" opacity="0"/>
+          <image class="word" data-word="landings" href="drafts%20cover/words/landings.png" x="131.7" y="169.2" width="1130.3" height="173.6" opacity="0"/>
+          <image class="word" data-word="frontend" href="drafts%20cover/words/frontend.png" x="52.5" y="160.3" width="1209.5" height="191.3" opacity="0"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+  </div>
+  <a class="hint" href="#design"><span>↓</span> <span class="hint-text">Нажми на крюк</span></a>
+</section>
+<section id="design" class="block" aria-labelledby="design-title" tabindex="-1">
+  <h2 id="design-title">Плакаты и Дизайн постов</h2>
+  <!-- На главной — три постера и стрелка в галерею (gallery.html). data-colors — цвета фона просмотра -->
+  <div class="design-preview">
+    <div class="works works-three">
+      <a class="work" href="tg%20pics/photo_2026-11-20_10-43-12.jpg" data-title="Dysphored but not broken" data-colors="#f05238,#ffa429">
+        <img src="tg%20pics/photo_2026-11-20_10-43-12.jpg" alt="Типографическая композиция Dysph: крупные буквы с огненной фактурой и надпись «but not broken»" width="1536" height="2048" loading="lazy">
+        <span class="work-peek" aria-hidden="true"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M1.5 10C5.5 3.8 10.4 1.5 16 1.5S26.5 3.8 30.5 10C26.5 16.2 21.6 18.5 16 18.5S5.5 16.2 1.5 10Z"/><circle cx="16" cy="10" r="4.6"/><circle class="eye-glint" cx="17.6" cy="8.4" r="1.3"/></svg><span>рассмотреть поближе</span></span>
+        <span class="work-more" aria-hidden="true">Рассмотреть побольше</span>
+      </a>
+      <a class="work" href="tg%20pics/ego.jpg" data-title="Эго дремлет" data-colors="#f33441,#c4c8d2">
+        <img src="tg%20pics/ego.jpg" alt="Эго дремлет: белая рука с каплями крови и красные буквы «ЭГО» на розово-сером фоне" width="1024" height="1280" loading="lazy">
+        <span class="work-peek" aria-hidden="true"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M1.5 10C5.5 3.8 10.4 1.5 16 1.5S26.5 3.8 30.5 10C26.5 16.2 21.6 18.5 16 18.5S5.5 16.2 1.5 10Z"/><circle cx="16" cy="10" r="4.6"/><circle class="eye-glint" cx="17.6" cy="8.4" r="1.3"/></svg><span>рассмотреть поближе</span></span>
+        <span class="work-more" aria-hidden="true">Рассмотреть побольше</span>
+      </a>
+      <a class="work" href="assets/sheet-258.jpg" data-title="Last Bark" data-colors="#f1363e,#d57f53">
+        <img src="assets/sheet-258.jpg" alt="Last Bark: собака под красными звёздами" width="1920" height="2560" loading="lazy">
+        <span class="work-peek" aria-hidden="true"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M1.5 10C5.5 3.8 10.4 1.5 16 1.5S26.5 3.8 30.5 10C26.5 16.2 21.6 18.5 16 18.5S5.5 16.2 1.5 10Z"/><circle cx="16" cy="10" r="4.6"/><circle class="eye-glint" cx="17.6" cy="8.4" r="1.3"/></svg><span>рассмотреть поближе</span></span>
+        <span class="work-more" aria-hidden="true">Рассмотреть побольше</span>
+      </a>
+    </div>
+    <a class="design-more" href="gallery.html" aria-label="Плакаты и Дизайн постов: галерея — все работы"><span class="design-more-arrow" aria-hidden="true">→</span></a>
+  </div>
+</section>
+<section id="projects" class="block" aria-labelledby="projects-title">
+  <h2 id="projects-title">Проекты</h2>
+  <!-- Карточки проектов: превью, описание, стек. Сами проекты лежат в projects/ -->
+  <div class="projects">
+    <!-- Карточка проекта: превью — ссылка на проект, внизу кнопки. Карточка не ссылка целиком: в ней может быть несколько ссылок -->
+    <div class="project project-split">
+      <a class="project-shot" href="projects/dysph-audio/index.html" tabindex="-1" aria-hidden="true"><img src="projects/dysph-audio/preview.png?v=8" alt="" width="1440" height="900" loading="lazy"></a>
+      <div class="project-info">
+        <small>Лендинг · концепт</small>
+        <div class="project-head"><b class="project-title">Ears of God</b><span class="flagman">FLAGMAN</span></div>
+        <span class="project-text">Сайт мастерской люксовых активных колонок. Структура как у производителей hi-end акустики: выпадающие меню, фото каждой модели на весь экран, архив по годам. История мастерской — поверх ночного Петербурга кисти Алексея Боголюбова. Интерактивный разрез, график АЧХ и карта залов.</span>
+        <span class="project-stack"><i>HTML</i><i>CSS</i><i>JavaScript</i><i>SVG</i><i>Canvas</i><i>без фреймворков</i></span>
+        <div class="project-actions">
+          <a class="project-btn project-btn-main" href="projects/dysph-audio/index.html">Открыть сайт ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="project project-split">
+      <a class="project-shot" href="projects/dysph-house/index.html" tabindex="-1" aria-hidden="true"><img src="projects/dysph-house/preview.png?v=10" alt="" width="1440" height="900" loading="lazy"></a>
+      <div class="project-info">
+        <small>Лендинг · концепт</small>
+        <b class="project-title">Кольцо+ Architecture</b>
+        <span class="project-text">Сайт застройщика загородных посёлков в тёмной строгой стилистике. Слайдер посёлков, подбор дома по фильтрам из общей базы, карточки посёлков со сводкой по спальням, способы покупки, калькулятор, интерактивная планировка и новости.</span>
+        <span class="project-stack"><i>HTML</i><i>CSS</i><i>JavaScript</i><i>SVG</i><i>без фреймворков</i></span>
+        <div class="project-actions">
+          <a class="project-btn project-btn-main" href="projects/dysph-house/index.html">Открыть сайт ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="project project-split">
+      <a class="project-shot" href="https://t.me/financialtrackerTEST_bot" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/money-bot-preview.png" alt="" width="1000" height="600" loading="lazy"></a>
+      <div class="project-info">
+        <small>Telegram-бот</small>
+        <b class="project-title">Финансовый трекер</b>
+        <span class="project-text">Бот учёта трат. Пишешь «кофе 300» или «такси 450 вчера» — текстом или голосом, а он сам определяет категорию и запоминает правки. По команде /month рисует график за месяц и сравнивает с прошлым. Работает на Telegram Serverless: без своего сервера, PNG-график рисуется собственным кодировщиком.</span>
+        <span class="project-stack"><i>JavaScript</i><i>Telegram Serverless</i><i>SQLite</i><i>Yandex SpeechKit</i></span>
+        <div class="project-actions">
+          <a class="project-btn project-btn-main" href="https://t.me/financialtrackerTEST_bot" target="_blank" rel="noopener">Открыть бота ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="project project-split">
+      <a class="project-shot" href="https://t.me/placatsshopTEST_bot" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/poster-shop-preview.png" alt="" width="1440" height="900" loading="lazy"></a>
+      <div class="project-info">
+        <small>Telegram Mini App · демо</small>
+        <b class="project-title">Placats shop</b>
+        <span class="project-text">Магазин генеративных постеров внутри Telegram. Сами постеры рисует код — шум, искажение координат и зерно. Размер, бумага и рама меняют цену и превью, корзина хранится в облаке Telegram. Заказ приходит владельцу в бот с кнопками статусов, цены пересчитывает сервер.</span>
+        <span class="project-stack"><i>JavaScript</i><i>Telegram Mini Apps</i><i>Telegram Serverless</i><i>SQLite</i></span>
+        <div class="project-actions">
+          <a class="project-btn project-btn-main" href="https://t.me/placatsshopTEST_bot" target="_blank" rel="noopener">Открыть бота ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Проекты после третьего: свёрнуты, видно только верх следующего под затемнением. Стрелка раскрывает раздел (sections.js) -->
+  <div class="projects-more is-collapsed" id="projects-more">
+    <!-- Четвёртый проект: пока макет-заглушка — замените на карточку проекта по образцу выше -->
+    <div class="project project-split project-mock" role="group" aria-label="Проект в работе">
+      <div class="project-shot project-shot-mock" aria-hidden="true">
+        <div class="build">
+          <div class="build-win">
+            <i class="b-bar"><b></b><b></b><b></b></i>
+            <i class="b-nav"></i>
+            <i class="b-hero"></i>
+            <i class="b-line l1"></i>
+            <i class="b-line l2"></i>
+            <i class="b-cards"><b></b><b></b><b></b></i>
+            <i class="b-cursor"></i>
+          </div>
+          <div class="build-status"><b class="build-dots"><i></i><i></i><i></i></b><span>в работе</span><em class="build-progress"><i></i></em></div>
+        </div>
+      </div>
+      <div class="project-info">
+        <small>Скоро · в работе</small>
+        <b class="project-title">Новый проект</b>
+        <span class="mock-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="project-stack" aria-hidden="true"><i class="mock-chip"></i><i class="mock-chip"></i><i class="mock-chip"></i></span>
+        <div class="project-actions"><span class="project-btn project-btn-main is-disabled" aria-disabled="true">Скоро ↗</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="projects-toggle-row"><button class="projects-toggle" type="button" aria-expanded="false" aria-controls="projects-more"><span class="projects-toggle-arrow" aria-hidden="true">↓</span><span class="sr projects-toggle-label">Показать все проекты</span></button></div>
+</section>
+<aside class="kwork" aria-label="Заказ на Kwork">
+  <div class="kwork-blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="kwork-glass">
+    <p>Нужен сайт, бот или дизайн? Напишите мне на Kwork — обсудим задачу и сроки.</p>
+    <a class="kwork-button" href="https://kwork.ru/user/dysphoblond" target="_blank" rel="noopener">Написать на Kwork ↗</a>
+  </div>
+</aside>
+<section id="more" class="block" aria-labelledby="more-title">
+  <h2 id="more-title">Ещё немного...</h2>
+  <!-- Эксперименты и инструменты, которые не уместились в «Проекты». Компактная сетка: новые карточки встают в ряд -->
+  <div class="projects projects-compact">
+    <div class="project project-split">
+      <a class="project-shot" href="projects/placats-lab/index.html" tabindex="-1" aria-hidden="true"><img src="projects/placats-lab/preview.png" alt="" width="1440" height="900" loading="lazy"></a>
+      <div class="project-info">
+        <small>Генеративная графика · инструмент</small>
+        <b class="project-title">Placats Lab</b>
+        <span class="project-text">Генератор, которым сделаны постеры Placats shop. Шум Перлина, искажение координат и зерно — ползунки меняют форму и палитру, превью перерисовывается сразу. Готовый постер скачивается в PNG до 4800 px, а параметры хранятся в ссылке.</span>
+        <span class="project-stack"><i>JavaScript</i><i>Canvas</i><i>Web Workers</i><i>без библиотек</i></span>
+        <div class="project-actions">
+          <a class="project-btn project-btn-main" href="projects/placats-lab/index.html">Открыть генератор ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="bonus" class="block" aria-labelledby="bonus-title">
+  <h2 id="bonus-title">Бонус</h2>
+  <!-- Игра «dyspphy fly» — рисует game.js -->
+  <div class="game" tabindex="0" role="application" aria-label="Мини-игра dyspphy fly. Пробел, клик или касание — взмах">
+    <canvas class="game-canvas" aria-hidden="true"></canvas>
+    <div class="game-score" aria-hidden="true">0</div>
+    <div class="game-panel" aria-live="polite">
+      <p class="game-title">Dyspphy fly</p>
+      <p class="game-text">Нажми, чтобы начать</p>
+      <p class="game-hint">пробел · клик · тап</p>
+      <p class="game-best"><span class="game-best-label">рекорд</span> <b class="game-best-value">0</b></p>
+    </div>
+  </div>
+</section>
+<section id="contacts" class="block" aria-labelledby="contacts-title">
+  <h2 id="contacts-title">Контакты</h2>
+  <!-- Плитки наклоняются за курсором (contacts.js) -->
+  <ul class="tiles">
+    <li class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="line"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>
+      <small>Почта</small>
+      <a class="tile-link tile-mail" href="mailto:dysphoblond@gmail.com"><b>dysphoblond@gmail.com</b></a>
+      <span class="tile-foot"><span>написать письмо ↗</span><button class="tile-copy" type="button" data-copy="dysphoblond@gmail.com">копировать</button></span>
+    </li>
+    <li class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="line"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18M10.5 12.5v2h3v-2"/></svg>
+      <small>Kwork</small>
+      <a class="tile-link" href="https://kwork.ru/user/dysphoblond" target="_blank" rel="noopener"><b>Заказать на Kwork</b></a>
+      <span class="tile-foot"><span>безопасная сделка ↗</span></span>
+    </li>
+    <li class="tile">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.8.1 2.1l4.5 1.4 1.7 5.4c.2.7 1.1.9 1.6.4l2.5-2.4 4.8 3.5c.6.5 1.5.1 1.7-.6L23 5.8c.2-1-.7-1.8-1.6-1.5Zm-11.7 10.8 8.6-7.6-7 8.3-.3 3.2-1.3-3.9Z"/></svg>
+      <small>Telegram</small>
+      <a class="tile-link" href="https://t.me/dysphoblond" target="_blank" rel="noopener"><b>Написать в личку</b></a>
+      <span class="tile-foot"><span>@dysphoblond ↗</span></span>
+    </li>
+  </ul>
+</section>
+<section id="socials" class="block" aria-labelledby="socials-title">
+  <h2 id="socials-title">Соц сети</h2>
+  <!-- Лента соцсетей в стиле liquid glass -->
+  <div class="socials-stage">
+    <div class="socials-blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+    <ul class="socials-row">
+      <li><a class="glass" href="https://t.me/dysphoblonde" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.8.1 2.1l4.5 1.4 1.7 5.4c.2.7 1.1.9 1.6.4l2.5-2.4 4.8 3.5c.6.5 1.5.1 1.7-.6L23 5.8c.2-1-.7-1.8-1.6-1.5Zm-11.7 10.8 8.6-7.6-7 8.3-.3 3.2-1.3-3.9Z"/></svg><span><b>Telegram-канал</b><small>@dysphoblonde</small></span><em aria-hidden="true">↗</em></a></li>
+      <li><a class="glass" href="https://www.instagram.com/dysphoblonde/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="stroke"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg><span><b>Instagram</b><small>@dysphoblonde</small></span><em aria-hidden="true">↗</em></a></li>
+      <li><a class="glass" href="https://pin.it/6AhCECj4q" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2 1 .5 1.8 1.5 1.8 1.8 0 3.1-1.9 3.1-4.6 0-2.4-1.7-4.1-4.2-4.1-2.9 0-4.6 2.2-4.6 4.4 0 .9.3 1.8.8 2.3l.1.3-.3 1.2c0 .2-.2.3-.4.2-1.3-.6-2.1-2.5-2.1-4 0-3.3 2.4-6.3 6.9-6.3 3.6 0 6.4 2.6 6.4 6 0 3.6-2.3 6.5-5.4 6.5-1.1 0-2.1-.6-2.4-1.2l-.7 2.5c-.2.9-.9 2.1-1.3 2.8A10 10 0 1 0 12 2Z"/></svg><span><b>Pinterest</b><small>доски и референсы</small></span><em aria-hidden="true">↗</em></a></li>
+    </ul>
+  </div>
+</section>
+</main><footer><span>© dysphoblond</span><a href="#top">НАВЕРХ ↑</a></footer>
+<dialog id="work-viewer" class="viewer" aria-label="Просмотр работы">
+  <div class="viewer-bg" aria-hidden="true"><i class="flow flow-x"></i><i class="flow flow-y"></i><i class="viewer-shade"></i></div>
+  <figure class="viewer-figure"><img alt=""></figure>
+  <button class="viewer-close" aria-label="Закрыть">Закрыть ×</button>
+  <button class="viewer-nav viewer-prev" aria-label="Предыдущая работа">←</button>
+  <button class="viewer-nav viewer-next" aria-label="Следующая работа">→</button>
+</dialog>
+<script src="i18n.js?v=15"></script><script src="sections.js?v=4"></script><script src="design.js"></script><script src="atmosphere.js"></script><script src="pixels.js?v=3"></script><script src="words.js"></script><script src="nav.js?v=4"></script><script src="game.js"></script><script src="contacts.js"></script></body></html>

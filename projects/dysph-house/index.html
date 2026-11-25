@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0d0e0f">
+<title>Кольцо+ — загородные посёлки в Подмосковье от застройщика</title>
+<meta name="description" content="Застройщик загородных посёлков Кольцо+: готовые и строящиеся дома 96–164 м² с участком и отделкой в трёх посёлках, подбор дома, ипотека, рассрочка и трейд-ин. Концепт-лендинг из портфолио dysphoblond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css?v=21">
+</head>
+<body>
+<!-- Пометка: лендинг — концепт для портфолио, компания вымышленная -->
+<div class="concept-bar">
+  <div class="wrap"><span>Концепт из портфолио dysphoblond. Компания, посёлки, цены и новости вымышлены.</span><a href="../../index.html#projects">← В портфолио</a></div>
+</div>
+
+<header class="header" id="header">
+  <div class="wrap header-row">
+    <a class="logo" href="#top">Кольцо+ <span>Architecture</span></a>
+    <nav class="nav" id="nav" aria-label="Разделы">
+      <a href="#villages">Посёлки</a><a href="#select">Подбор дома</a><a href="#buy">Покупка</a><a href="#about">О компании</a><a href="#news">Новости</a><a href="#visit">Контакты</a>
+    </nav>
+    <button class="btn header-cta" type="button" data-dialog="callback">Заказать звонок</button>
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+<!-- 1. Первый экран: посёлки по одному, листаются кнопками -->
+<section class="hero" id="top" aria-roledescription="карусель" aria-label="Посёлки Кольцо+">
+  <h1 class="sr">Кольцо+ — застройщик загородных посёлков в Подмосковье</h1>
+  <div class="wrap">
+    <div class="slides" id="slides">
+    <article class="slide" data-slide="0" aria-roledescription="слайд" aria-label="1 из 3">
+      <div class="slide-text">
+        <p class="kicker">Новорижское шоссе · 38 км</p>
+        <p class="slide-title">Blond Hills</p>
+        <p class="lead">48 домов сданы и заселены, в продаже последние. Два можно занять через месяц после сделки.</p>
+        <dl class="slide-facts">
+          <div><dt>Свободно</dt><dd data-free="blond"></dd></div>
+          <div><dt>Цена</dt><dd data-from="blond"></dd></div>
+          <div><dt>Дома</dt><dd>96–164 м²</dd></div>
+        </dl>
+        <div class="hero-actions">
+          <button class="btn" type="button" data-select="blond">Выбрать дом</button>
+          <a class="btn btn-ghost" href="#v-blond">О посёлке</a>
+        </div>
+      </div>
+      <figure class="shot">
+        <img src="img/blond.jpg" width="736" height="414" style="object-position:50% 50%" alt="Двухэтажный дом с тёмным фасадом, каменными вставками и деревянной входной группой" fetchpriority="high">
+        <figcaption class="stamp"><span><b>Potential 128</b> · Blond Hills</span><span>Визуализация</span></figcaption>
+      </figure>
+    </article>
+    <article class="slide" data-slide="1" aria-roledescription="слайд" aria-label="2 из 3" hidden>
+      <div class="slide-text">
+        <p class="kicker">Дмитровское шоссе · 29 км</p>
+        <p class="slide-title">Северный Крюк</p>
+        <p class="lead">Первая очередь сдана в 2025 году, вторую строим. Ближайший к МКАД посёлок, школа и магазины — в 10 минутах.</p>
+        <dl class="slide-facts">
+          <div><dt>Свободно</dt><dd data-free="hook"></dd></div>
+          <div><dt>Цена</dt><dd data-from="hook"></dd></div>
+          <div><dt>Дома</dt><dd>96–164 м²</dd></div>
+        </dl>
+        <div class="hero-actions">
+          <button class="btn" type="button" data-select="hook">Выбрать дом</button>
+          <a class="btn btn-ghost" href="#v-hook">О посёлке</a>
+        </div>
+      </div>
+      <figure class="shot">
+        <img src="img/hook.jpg" width="736" height="920" style="object-position:50% 58%" alt="Лестница к одноэтажному дому из тёмного бетона с консольной кровлей, туман">
+        <figcaption class="stamp"><span><b>Blond 96</b> · Северный Крюк</span><span>Визуализация</span></figcaption>
+      </figure>
+    </article>
+    <article class="slide" data-slide="2" aria-roledescription="слайд" aria-label="3 из 3" hidden>
+      <div class="slide-text">
+        <p class="kicker">Калужское шоссе · 41 км</p>
+        <p class="slide-title">Озёрная Линия</p>
+        <p class="lead">Новый посёлок у озера: открыли продажи первой очереди. Участки от 12 соток, у части — выход к воде.</p>
+        <dl class="slide-facts">
+          <div><dt>Свободно</dt><dd data-free="lake"></dd></div>
+          <div><dt>Цена</dt><dd data-from="lake"></dd></div>
+          <div><dt>Дома</dt><dd>96–164 м²</dd></div>
+        </dl>
+        <div class="hero-actions">
+          <button class="btn" type="button" data-select="lake">Выбрать дом</button>
+          <a class="btn btn-ghost" href="#v-lake">О посёлке</a>
+        </div>
+      </div>
+      <figure class="shot">
+        <img src="img/lake.jpg" width="736" height="736" style="object-position:50% 45%" alt="Дом с остеклённым вторым этажом на опоре над берегом озера">
+        <figcaption class="stamp"><span><b>Dysph 164</b> · Озёрная Линия</span><span>Визуализация</span></figcaption>
+      </figure>
+    </article>
+    </div>
+    <div class="slider-nav">
+      <button class="slider-btn" type="button" id="slide-prev" aria-label="Предыдущий посёлок">←</button>
+      <span class="slider-count" id="slide-count" aria-live="polite">1 / 3</span>
+      <button class="slider-btn" type="button" id="slide-next" aria-label="Следующий посёлок">→</button>
+      <span class="slider-names" id="slide-names"></span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Спецпредложения -->
+<section class="offers" id="offers" aria-label="Предложения">
+  <div class="wrap offers-grid">
+    <article class="offer">
+      <img class="offer-photo" src="img/blond.jpg" width="736" height="414" alt="Двухэтажный дом с тёмным фасадом в Blond Hills" loading="lazy">
+      <p class="offer-fig"><b>2</b><span>готовых дома с мебелью</span></p>
+      <p class="offer-date">До 31 декабря</p>
+      <h2 class="offer-title">Дома с мебелью в Blond Hills</h2>
+      <p>Два готовых дома с кухней, светом и мебелью по проекту нашего дизайнера. Въезд через месяц после сделки.</p>
+      <button class="link" type="button" data-dialog="offer" data-offer="Дома с мебелью в Blond Hills">Узнать подробности</button>
+    </article>
+    <article class="offer">
+      <img class="offer-photo" src="img/hook.jpg" width="736" height="920" alt="Лестница к дому в Северном Крюке" loading="lazy">
+      <p class="offer-fig"><b>30 %</b><span>при подписании, дальше равными платежами</span></p>
+      <p class="offer-date">Вторая очередь</p>
+      <h2 class="offer-title">Рассрочка в Северном Крюке</h2>
+      <p>30% при подписании, остальное равными платежами до сдачи дома. Цена не меняется.</p>
+      <button class="link" type="button" data-dialog="offer" data-offer="Рассрочка в Северном Крюке">Узнать подробности</button>
+    </article>
+    <article class="offer">
+      <img class="offer-photo" src="img/lake.jpg" width="736" height="736" alt="Дом у озера в Озёрной Линии" loading="lazy">
+      <p class="offer-fig"><b>2 мес.</b><span>цены первой очереди не меняются</span></p>
+      <p class="offer-date">Старт продаж</p>
+      <h2 class="offer-title">Первая очередь Озёрной Линии</h2>
+      <p>Цены первой очереди фиксируем на два месяца. Показываем участки по выходным, с 11 до 17.</p>
+      <button class="link" type="button" data-dialog="offer" data-offer="Первая очередь Озёрной Линии">Узнать подробности</button>
+    </article>
+  </div>
+</section>
+
+<!-- 3. Подбор дома по параметрам -->
+<section class="section panel-sec" id="select" aria-labelledby="select-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="select-title">Подбор дома</h2>
+      <p>Готовые и строящиеся дома трёх посёлков. Цена включает участок, дом с чистовой отделкой и подключённые сети. Бронь держим 5 дней без предоплаты.</p>
+    </div>
+    <form class="picker" id="picker" aria-label="Параметры подбора">
+      <label class="pick"><span>Посёлок</span>
+        <select name="village"><option value="all">Все посёлки</option><option value="blond">Blond Hills</option><option value="hook">Северный Крюк</option><option value="lake">Озёрная Линия</option></select>
+      </label>
+      <fieldset class="pick"><legend>Спальни</legend>
+        <div class="seg">
+          <label><input type="radio" name="beds" value="all" checked><span>Любое</span></label>
+          <label><input type="radio" name="beds" value="2"><span>2</span></label>
+          <label><input type="radio" name="beds" value="3"><span>3</span></label>
+          <label><input type="radio" name="beds" value="4"><span>4</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="pick"><legend>Готовность</legend>
+        <div class="seg">
+          <label><input type="radio" name="state" value="all" checked><span>Все</span></label>
+          <label><input type="radio" name="state" value="ready"><span>Готовые</span></label>
+          <label><input type="radio" name="state" value="building"><span>Строятся</span></label>
+        </div>
+      </fieldset>
+      <label class="pick"><span>Цена до</span>
+        <select name="price"><option value="0">Любая</option><option value="12">12 млн ₽</option><option value="15">15 млн ₽</option><option value="18">18 млн ₽</option></select>
+      </label>
+      <label class="check pick-free"><input type="checkbox" name="free" checked> Только свободные</label>
+    </form>
+    <p class="picker-count" id="picker-count" aria-live="polite"></p>
+    <table class="lots-table">
+      <thead>
+        <tr><th scope="col">Участок</th><th scope="col">Посёлок</th><th scope="col">Проект</th><th scope="col">Дом</th><th scope="col">Земля</th><th scope="col">Готовность</th><th scope="col">Цена</th><th scope="col">Статус</th><th scope="col"><span class="sr">Действие</span></th></tr>
+      </thead>
+      <tbody id="lots-body"></tbody>
+    </table>
+    <div class="picker-empty" id="picker-empty" hidden>
+      <p>Таких домов сейчас нет. Оставьте телефон — сообщим, когда появятся, или подберём ближайший вариант.</p>
+      <button class="btn btn-ghost" type="button" data-dialog="callback">Оставить телефон</button>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Посёлки -->
+<section class="section section-surface" id="villages" aria-labelledby="villages-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="villages-title">Посёлки</h2>
+      <p>Три посёлка в 29–41 км от МКАД. Везде одинаковые сети и правила: газ, вода и свет подведены к каждому участку, дороги асфальтовые, въезд по номерам машин.</p>
+    </div>
+    <div class="villages">
+    <article class="village" id="v-blond">
+      <div class="village-main">
+        <h3>Blond Hills</h3>
+        <p class="village-road">Новорижское шоссе, 38 км · сдан в 2024 году</p>
+        <p class="village-text">Посёлок на 56 домов среди соснового леса. Сданы и заселены 48, в продаже последние готовые и три дома, которые сдаём в 2027 году.</p>
+        <dl class="village-facts"><div><dt>Участки</dt><dd>10–18 соток</dd></div><div><dt>Дома</dt><dd>96–164 м²</dd></div><div><dt>Сети</dt><dd>Газ, вода, свет, оптика</dd></div><div><dt>Сбор</dt><dd>4 500 ₽ в месяц</dd></div></dl>
+        <ul class="village-times"><li><b>35 мин</b> до МКАД на машине</li><li><b>15 мин</b> до ж/д станции</li><li><b>5 мин</b> пешком до пруда и леса</li></ul>
+      </div>
+      <div class="village-beds">
+        <img class="village-photo" src="img/blond.jpg" width="736" height="414" style="object-position:50% 50%" alt="" loading="lazy">
+        <p class="beds-title">Свободные дома по числу спален</p>
+        <ul class="beds" data-beds="blond"></ul>
+        <button class="btn btn-ghost" type="button" data-select="blond">Все дома в посёлке</button>
+      </div>
+    </article>
+    <article class="village" id="v-hook">
+      <div class="village-main">
+        <h3>Северный Крюк</h3>
+        <p class="village-road">Дмитровское шоссе, 29 км · строится вторая очередь</p>
+        <p class="village-text">Первая очередь — 64 дома — сдана в 2025 году. Во второй очереди 40 домов, сдача с февраля по июнь 2027 года.</p>
+        <dl class="village-facts"><div><dt>Участки</dt><dd>8–12 соток</dd></div><div><dt>Дома</dt><dd>96–164 м²</dd></div><div><dt>Сети</dt><dd>Газ, вода, свет, оптика</dd></div><div><dt>Сбор</dt><dd>3 900 ₽ в месяц</dd></div></dl>
+        <ul class="village-times"><li><b>30 мин</b> до МКАД на машине</li><li><b>8 мин</b> до ж/д станции</li><li><b>10 мин</b> до школы и магазинов</li></ul>
+      </div>
+      <div class="village-beds">
+        <img class="village-photo" src="img/hook.jpg" width="736" height="920" style="object-position:50% 58%" alt="" loading="lazy">
+        <p class="beds-title">Свободные дома по числу спален</p>
+        <ul class="beds" data-beds="hook"></ul>
+        <button class="btn btn-ghost" type="button" data-select="hook">Все дома в посёлке</button>
+      </div>
+    </article>
+    <article class="village" id="v-lake">
+      <div class="village-main">
+        <h3>Озёрная Линия</h3>
+        <p class="village-road">Калужское шоссе, 41 км · старт продаж</p>
+        <p class="village-text">Первая очередь — 24 дома вдоль озера. Строим с осени 2026 года, первые дома сдаём в августе 2027.</p>
+        <dl class="village-facts"><div><dt>Участки</dt><dd>12–20 соток</dd></div><div><dt>Дома</dt><dd>96–164 м²</dd></div><div><dt>Сети</dt><dd>Вода и свет, газ — в 2027 году</dd></div><div><dt>Сбор</dt><dd>с момента сдачи</dd></div></dl>
+        <ul class="village-times"><li><b>40 мин</b> до МКАД на машине</li><li><b>2 мин</b> пешком до озера</li><li><b>20 мин</b> до ж/д станции</li></ul>
+      </div>
+      <div class="village-beds">
+        <img class="village-photo" src="img/lake.jpg" width="736" height="736" style="object-position:50% 45%" alt="" loading="lazy">
+        <p class="beds-title">Свободные дома по числу спален</p>
+        <ul class="beds" data-beds="lake"></ul>
+        <button class="btn btn-ghost" type="button" data-select="lake">Все дома в посёлке</button>
+      </div>
+    </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Проекты домов: по ним построены все посёлки -->
+<section class="section" id="models" aria-labelledby="models-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="models-title">Проекты домов</h2>
+      <p>Все дома в наших посёлках построены по этим трём проектам. Любой проект можно перекроить: сдвинуть стены, развернуть окна, добавить комнату. Цены здесь — за дом под ключ без участка.</p>
+    </div>
+    <table class="models-table">
+      <thead>
+        <tr><th scope="col">Проект</th><th scope="col">Площадь</th><th scope="col">Спальни</th><th scope="col">Этажи</th><th scope="col">Пятно</th><th scope="col">Срок</th><th scope="col">Под ключ</th><th scope="col"><span class="sr">Действие</span></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <svg viewBox="0 0 120 64" aria-hidden="true"><path d="M8 56V24H112V56M2 56H118M8 24V20H112V24M18 56V36H32V56M48 36H102V50H48Z"/></svg>
+            <span><b>Blond 96</b><small>Для двоих или семьи с ребёнком. Плоская кровля, гостиная 32 м².</small></span>
+          </th>
+          <td data-label="Площадь">96 м²</td><td data-label="Спальни">2</td><td data-label="Этажи">1</td><td data-label="Пятно">12 × 8 м</td><td data-label="Срок">6 мес.</td><td data-label="Под ключ" class="price">7,39 млн ₽</td>
+          <td><button class="link" type="button" data-pick="blond">Рассчитать →</button></td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <svg viewBox="0 0 120 64" aria-hidden="true"><path d="M8 56V30L56 16V56M56 28H112V56M2 56H118M14 56V40H28V56M64 34H106V52H64Z"/></svg>
+            <span><b>Potential 128</b><small>Три спальни, кухня-гостиная 48 м² с выходом на террасу. Самый частый выбор — 61 дом из 112.</small></span>
+          </th>
+          <td data-label="Площадь">128 м²</td><td data-label="Спальни">3</td><td data-label="Этажи">1</td><td data-label="Пятно">16 × 8 м</td><td data-label="Срок">7 мес.</td><td data-label="Под ключ" class="price">9,86 млн ₽</td>
+          <td><button class="link" type="button" data-pick="potential">Рассчитать →</button></td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <svg viewBox="0 0 120 64" aria-hidden="true"><path d="M22 56V24L60 6L98 24V56M22 24H98M2 56H118M50 56V40H70V56M32 32H44V48H32ZM76 32H88V48H76Z"/></svg>
+            <span><b>Dysph 164</b><small>Барнхаус на два этажа: второй свет в гостиной, кабинет под крышей, четыре спальни.</small></span>
+          </th>
+          <td data-label="Площадь">164 м²</td><td data-label="Спальни">4</td><td data-label="Этажи">2</td><td data-label="Пятно">10,3 × 8 м</td><td data-label="Срок">8 мес.</td><td data-label="Под ключ" class="price">12,63 млн ₽</td>
+          <td><button class="link" type="button" data-pick="dysph">Рассчитать →</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 6. Планировка -->
+<section class="section section-surface" id="plan" aria-labelledby="plan-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="plan-title">Планировка Potential&nbsp;128</h2>
+      <p>Нажмите на комнату на плане или в списке. Терраса и гараж — опции: их можно добавить прямо отсюда, и они попадут в расчёт.</p>
+    </div>
+    <div class="plan-layout">
+      <div class="plan-board">
+        <div class="plan-tools" role="group" aria-label="Слои планировки">
+          <label class="check"><input type="checkbox" id="layer-furniture" checked> Мебель</label>
+          <label class="check"><input type="checkbox" id="layer-dims"> Размеры</label>
+          <span class="plan-swipe" aria-hidden="true">План листается →</span>
+        </div>
+        <div class="plan-scroll">
+        <svg class="plan-svg" id="plan-svg" viewBox="-340 -60 1200 640" role="group" aria-label="План дома Potential 128">
+          <g class="extra" id="extra-garage" data-room="garage"><rect x="-300" y="100" width="300" height="300"/><text x="-150" y="245">Гараж</text><text class="area" x="-150" y="272">36 м²</text></g>
+          <g class="extra" id="extra-terrace" data-room="terrace"><rect x="150" y="400" width="450" height="150"/><text x="375" y="470">Терраса</text><text class="area" x="375" y="497">27 м²</text></g>
+          <g class="room" data-room="hall"><rect x="0" y="0" width="150" height="200"/><text x="75" y="95">Прихожая</text><text class="area" x="75" y="122">12 м²</text></g>
+          <g class="room" data-room="laundry"><rect x="0" y="200" width="150" height="100"/><text x="75" y="245">Постирочная</text><text class="area" x="75" y="272">6 м²</text></g>
+          <g class="room" data-room="wc"><rect x="0" y="300" width="150" height="100"/><text x="75" y="345">Санузел</text><text class="area" x="75" y="372">6 м²</text></g>
+          <g class="room" data-room="living"><rect x="150" y="0" width="300" height="400"/><text x="300" y="185">Кухня-гостиная</text><text class="area" x="300" y="212">48 м²</text></g>
+          <g class="room" data-room="corridor"><rect x="450" y="175" width="350" height="50"/><text x="625" y="207">Коридор · 7 м²</text></g>
+          <g class="room" data-room="kids"><rect x="450" y="0" width="175" height="175"/><text x="537" y="135">Детская</text><text class="area" x="537" y="162">12 м²</text></g>
+          <g class="room" data-room="bath"><rect x="625" y="0" width="100" height="175"/><text x="675" y="80">Ванная</text><text class="area" x="675" y="107">7 м²</text></g>
+          <g class="room" data-room="wardrobe"><rect x="725" y="0" width="75" height="175"/><text x="756" y="80">Гард.</text><text class="area" x="756" y="107">5 м²</text></g>
+          <g class="room" data-room="bedroom"><rect x="450" y="225" width="150" height="175"/><text x="525" y="275">Спальня</text><text class="area" x="525" y="302">10 м²</text></g>
+          <g class="room" data-room="master"><rect x="600" y="225" width="200" height="175"/><text x="700" y="262">Мастер-спальня</text><text class="area" x="700" y="289">14 м²</text></g>
+          <g class="openings" aria-hidden="true">
+            <path class="window" d="M190 400h220M480 400h90M640 400h120M800 250v120M800 30v110M480 0h110M180 0h240M0 40v100"/>
+            <path class="door" d="M150 60v50M150 230v40M150 330v40M450 190v30M500 175h50M650 175h40M740 175h40M500 225h50M680 225h50"/>
+          </g>
+          <g class="furniture" aria-hidden="true">
+            <rect x="170" y="20" width="260" height="34" rx="3"/><rect x="250" y="90" width="110" height="50" rx="4"/>
+            <rect x="260" y="290" width="140" height="56" rx="6"/><rect x="200" y="300" width="40" height="40" rx="20"/><rect x="290" y="240" width="80" height="34" rx="4"/>
+            <rect x="650" y="300" width="100" height="90" rx="4"/><rect x="650" y="300" width="100" height="22" rx="3"/>
+            <rect x="470" y="320" width="56" height="74" rx="4"/><rect x="470" y="20" width="56" height="74" rx="4"/><rect x="565" y="20" width="50" height="40" rx="3"/>
+            <rect x="640" y="20" width="70" height="40" rx="18"/><rect x="108" y="352" width="30" height="38" rx="14"/>
+            <rect x="784" y="15" width="10" height="150" rx="2"/><rect x="20" y="20" width="110" height="34" rx="2"/>
+          </g>
+          <g class="dims-layer" aria-hidden="true">
+            <path d="M0 -30H800M0 -38V-22M800 -38V-22M830 0V400M822 0H838M822 400H838"/>
+            <text x="400" y="-42">16 000</text><text x="846" y="206" class="dim-v">8 000</text>
+          </g>
+          <path class="outline" d="M0 0H800V400H0Z" aria-hidden="true"/>
+        </svg>
+        </div>
+      </div>
+      <div class="plan-side">
+        <div class="room-card" id="room-card" aria-live="polite"></div>
+        <ul class="room-list" id="room-list" aria-label="Помещения"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Способы покупки -->
+<section class="section panel-sec" id="buy" aria-labelledby="buy-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="buy-title">Способы покупки</h2>
+      <p>Менеджер посчитает, какой способ выгоднее именно для вас, и соберёт документы по дому и участку. Условия кредита и ставку называет банк.</p>
+    </div>
+    <div class="buy-list">
+      <div class="buy-row"><p class="buy-fig"><b>1 кредит</b><span>на дом и участок</span></p><h3>Ипотека</h3><p>Банки-партнёры оформляют дом с участком одним кредитом. Документы по земле и дому собираем сами, сделку проводим в офисе продаж.</p><button class="link" type="button" data-dialog="consult" data-topic="Ипотека">Консультация</button></div>
+      <div class="buy-row"><p class="buy-fig"><b>30 %</b><span>первый взнос</span></p><h3>Рассрочка</h3><p>Для домов, которые строятся: 30% при подписании, остальное равными платежами до сдачи. Без удорожания.</p><button class="link" type="button" data-dialog="consult" data-topic="Рассрочка">Консультация</button></div>
+      <div class="buy-row"><p class="buy-fig"><b>2 дня</b><span>на оценку квартиры</span></p><h3>Трейд-ин</h3><p>Зачтём вашу квартиру в счёт дома: оценим за два дня, затем выкупим её или продадим через партнёра.</p><button class="link" type="button" data-dialog="consult" data-topic="Трейд-ин">Консультация</button></div>
+      <div class="buy-row"><p class="buy-fig"><b>150 км</b><span>от МКАД</span></p><h3>Дом на вашем участке</h3><p>Если земля уже есть, построим по любому из трёх проектов в радиусе 150 км от МКАД.</p><a class="link" href="#calc">К калькулятору</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Калькулятор: дом на своей земле -->
+<section class="section panel-sec" id="calc" aria-labelledby="calc-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="calc-title">Дом на вашем участке</h2>
+      <p>Если земля уже есть, построим по любому проекту в радиусе 150 км от МКАД. Цены из прайса на ноябрь 2026. После выезда на участок пришлём смету на 340 позиций — она отличается от калькулятора не больше чем на 3%.</p>
+    </div>
+    <form class="calc" id="calc-form">
+      <div class="calc-fields">
+        <fieldset><legend>Проект</legend><div class="opts opts-3" id="model-choices"></div></fieldset>
+        <fieldset><legend>Комплектация</legend><div class="opts" id="package-choices"></div></fieldset>
+        <fieldset><legend>Фундамент</legend><div class="opts opts-3" id="foundation-choices"></div></fieldset>
+        <fieldset><legend>Дополнительно</legend><div class="opts opts-2" id="option-choices"></div></fieldset>
+      </div>
+      <aside class="receipt" aria-live="polite">
+        <p class="receipt-label">Итого за <span id="sum-model">Potential 128</span></p>
+        <p class="receipt-total" id="sum-total">0 ₽</p>
+        <p class="receipt-meta"><span id="sum-sqm"></span> · <span id="sum-time"></span></p>
+        <table class="receipt-lines"><tbody id="sum-lines"></tbody></table>
+        <button class="btn btn-wide" type="button" data-dialog="quote">Получить смету</button>
+        <p class="receipt-note">Демо-калькулятор, цены вымышленные.</p>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<!-- 9. Условия -->
+<section class="statement" id="terms" aria-labelledby="statement-title">
+  <div class="wrap">
+    <div class="statement-grid">
+      <h2 id="statement-title">Цена в договоре окончательная. За&nbsp;112&nbsp;домов мы ни разу не попросили доплату.</h2>
+      <figure class="estimate" aria-label="Пример сметы: участок 14, Blond Hills">
+        <figcaption class="estimate-head"><span>Смета · участок 14</span><span>340 позиций</span></figcaption>
+        <dl class="estimate-rows">
+          <div><dt>Фундамент, плита УШП</dt><dd>1 284 000 ₽</dd></div>
+          <div><dt>Стены и перекрытия</dt><dd>3 912 400 ₽</dd></div>
+          <div><dt>Кровля и окна</dt><dd>1 806 200 ₽</dd></div>
+          <div><dt>Инженерия</dt><dd>1 690 000 ₽</dd></div>
+          <div><dt>Отделка и кухня</dt><dd>2 369 000 ₽</dd></div>
+        </dl>
+        <p class="estimate-total"><span>В договоре</span><b>11 061 600 ₽</b></p>
+        <p class="estimate-stamp">Цена окончательная</p>
+      </figure>
+    </div>
+    <div class="terms">
+      <p>Смету считаем до подписания, по 340 позициям, и 7% запаса закладываем в свою маржу. Подорожал газобетон — это наш риск. Цену меняют только ваши правки после подписания, и каждую мы оформляем допсоглашением до начала работ.</p>
+      <p>За дома, которые ещё строятся, платите частями: при рассрочке — до сдачи, при ипотеке — по графику банка. На фундамент, стены и кровлю — гарантия 10 лет, на инженерию — 3 года.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. График стройки -->
+<section class="section" id="schedule" aria-labelledby="schedule-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="schedule-title">График Potential 128</h2>
+      <p>По пятницам — фотоотчёт и обновлённый график в личном кабинете. Отстаём больше чем на две недели — платим 0,1% от суммы договора за каждый день.</p>
+    </div>
+    <div class="gantt-scroll">
+      <div class="gantt" role="table" aria-label="График стройки по месяцам">
+        <div class="g-row g-head" role="row"><span role="columnheader">Этап · месяц</span><span role="columnheader">1</span><span role="columnheader">2</span><span role="columnheader">3</span><span role="columnheader">4</span><span role="columnheader">5</span><span role="columnheader">6</span><span role="columnheader">7</span></div>
+        <div class="g-row" role="row"><span role="rowheader">Проект и согласования</span><i style="--from:2;--to:3" role="cell">3 нед.</i></div>
+        <div class="g-row" role="row"><span role="rowheader">Фундамент</span><i style="--from:3;--to:4" role="cell">4 нед.</i></div>
+        <div class="g-row" role="row"><span role="rowheader">Стены и перекрытия</span><i style="--from:3;--to:5" role="cell">6 нед.</i></div>
+        <div class="g-row" role="row"><span role="rowheader">Кровля и окна</span><i style="--from:4;--to:6" role="cell">5 нед.</i></div>
+        <div class="g-row" role="row"><span role="rowheader">Инженерия</span><i style="--from:5;--to:7" role="cell">6 нед.</i></div>
+        <div class="g-row" role="row"><span role="rowheader">Отделка и кухня</span><i style="--from:6;--to:9" role="cell">9 нед.</i></div>
+        <div class="g-row g-final" role="row"><span role="rowheader">Приёмка и ключи</span><i style="--from:8;--to:9" role="cell">1 нед.</i></div>
+      </div>
+    </div>
+    <p class="note">Оплата — пятью платежами после приёмки этапов. Аванс за следующий этап не берём.</p>
+  </div>
+</section>
+
+<!-- 11. Кейс: план и факт одного дома -->
+<section class="section section-surface" aria-labelledby="case-title">
+  <div class="wrap case">
+    <div class="case-text">
+      <h2 id="case-title">Участок 14, Blond Hills</h2>
+      <p>Potential 128 под ключ на плите УШП, с террасой. Семья из четырёх человек, переехали в мае 2026. Во время стройки перенесли кухонный остров и добавили две розетки — это единственное допсоглашение, на 18 400 ₽.</p>
+    </div>
+    <table class="case-table">
+      <thead><tr><th scope="col"></th><th scope="col">В договоре</th><th scope="col">По факту</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Стоимость</th><td>11 061 600 ₽</td><td>11 080 000 ₽</td></tr>
+        <tr><th scope="row">Срок</th><td>7 мес.</td><td>6,5 мес.</td></tr>
+        <tr><th scope="row">Допсоглашения</th><td>—</td><td>1, на 18 400 ₽</td></tr>
+        <tr><th scope="row">Замечаний при приёмке</th><td>—</td><td>3, устранили за 4 дня</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 12. О компании -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="wrap about">
+    <figure class="about-photo">
+      <img src="img/interior.jpg" width="736" height="736" alt="Гостиная с панорамным окном во всю стену и видом на лесистые холмы" loading="lazy">
+      <figcaption>Гостиная Dysph 164: окно 6,4 м без импостов</figcaption>
+    </figure>
+    <div class="about-text">
+      <h2 id="about-title">Кольцо+ строит загородные посёлки с&nbsp;2016&nbsp;года</h2>
+      <p>Мы сами проектируем дома, ведём стройку своими бригадами и остаёмся управляющей компанией после сдачи. Поэтому отвечаем за посёлок целиком: от сетей и дорог до того, как через пять лет закрываются окна.</p>
+    </div>
+    <dl class="about-stats">
+      <div><dt>3</dt><dd>посёлка в Подмосковье</dd></div>
+      <div><dt>112</dt><dd>домов сдано и заселено</dd></div>
+      <div><dt>≈ 340</dt><dd>человек живут в наших посёлках</dd></div>
+      <div><dt>0</dt><dd>доплат сверх договора</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 13. Новости -->
+<section class="section section-surface" id="news" aria-labelledby="news-title">
+  <div class="wrap">
+    <div class="head-split">
+      <h2 id="news-title">Новости</h2>
+      <p>Что происходит на стройках и в посёлках.</p>
+    </div>
+    <ol class="news">
+      <li><time datetime="2026-11-18">18 ноября 2026</time><img class="news-photo" src="img/lake.jpg" width="736" height="736" alt="" loading="lazy"><div><h3>Открыли продажи первой очереди Озёрной Линии</h3><p>В продаже дома и участки вдоль озера. Первые показы — в эти выходные, запись по телефону офиса.</p></div></li>
+      <li><time datetime="2026-11-02">2 ноября 2026</time><img class="news-photo" src="img/hook.jpg" width="736" height="920" alt="" loading="lazy"><div><h3>Северный Крюк: сдали шесть домов второй очереди раньше графика</h3><p>Собственники получили ключи на две недели раньше даты из договора.</p></div></li>
+      <li><time datetime="2026-10-14">14 октября 2026</time><img class="news-photo" src="img/interior.jpg" width="736" height="736" alt="" loading="lazy"><div><h3>Новый вариант планировки Potential 128</h3><p>Вместо второй детской — кабинет с отдельным выходом на террасу. Доступен для всех строящихся домов.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 14. Вопросы -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq">
+    <div class="faq-side">
+      <h2 id="faq-title">Вопросы</h2>
+      <div class="faq-ask">
+        <p>Не нашли ответ? Менеджер ответит по телефону за пару минут.</p>
+        <a class="faq-phone" href="tel:+79000001280">+7 900 000-12-80</a>
+        <button class="btn btn-ghost" type="button" data-dialog="callback">Задать вопрос</button>
+      </div>
+    </div>
+    <div class="faq-list">
+      <details><summary>Что есть в посёлках?</summary><p>Асфальтированные дороги и освещение, охрана со шлагбаумом по номерам машин, вода, свет и оптоволокно до каждого дома. Газ подведён в Blond Hills и Северном Крюке, в Озёрную Линию — в 2027 году.</p></details>
+      <details><summary>Можно ли купить дом в ипотеку?</summary><p>Да, сделки проходят через банки-партнёры: менеджер соберёт документы по дому и участку и подскажет, какие программы подходят для загородного дома. Условия и ставку называет банк.</p></details>
+      <details><summary>Можно сдвинуть стены в готовом проекте?</summary><p>В строящихся домах перегородки и окна переносим бесплатно до подписания договора. Изменения несущих стен требуют пересчёта конструктива — обычно это 40–120 тыс. ₽.</p></details>
+      <details><summary>Строите на моём участке?</summary><p>Да, в радиусе 150 км от МКАД. До договора бесплатно приезжаем: смотрим грунт, уклон и подъезд для бетономешалки.</p></details>
+      <details><summary>В доме можно жить зимой?</summary><p>Да. Стены — газобетон 375 мм и 150 мм минваты, окна с трёхкамерным стеклопакетом, тёплый пол на первом этаже. Отопление Potential 128 на газе зимой — около 6–7 тыс. ₽ в месяц.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 15. Контакты: офисы продаж и обратный звонок -->
+<section class="visit panel-sec" id="visit" aria-labelledby="visit-title">
+  <div class="wrap visit-grid">
+    <div>
+      <h2 id="visit-title">Офисы продаж</h2>
+      <dl class="visit-info">
+        <div><dt>Blond Hills</dt><dd>ул. Светлая, 1 · ежедневно 10:00–20:00</dd></div>
+        <div><dt>Северный Крюк</dt><dd>Центральная ул., 4 · ежедневно 10:00–20:00</dd></div>
+        <div><dt>Озёрная Линия</dt><dd>Береговая ул., 2 · сб–вс 11:00–17:00</dd></div>
+        <div><dt>Телефон</dt><dd><a href="tel:+79000001280">+7 900 000-12-80</a> · одна линия для всех посёлков</dd></div>
+      </dl>
+    </div>
+    <form class="callback" id="callback" novalidate>
+      <p class="callback-title">Подберём дом под ваш бюджет</p>
+      <p class="callback-sub">Оставьте телефон — менеджер перезвонит за 15 минут в рабочее время.</p>
+      <label class="field"><span>Имя</span><input name="name" autocomplete="given-name"><em class="error"></em></label>
+      <label class="field"><span>Телефон</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00"><em class="error"></em></label>
+      <button class="btn btn-wide" type="submit">Жду звонка</button>
+      <p class="receipt-note">Демо-форма: данные никуда не отправляются.</p>
+      <p class="callback-done" id="callback-done" hidden></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<dialog class="dialog" id="dialog" aria-labelledby="dialog-title">
+  <form class="dialog-form" id="dialog-form" novalidate>
+    <button class="dialog-close" type="button" id="dialog-close" aria-label="Закрыть">×</button>
+    <p class="dialog-title" id="dialog-title"></p>
+    <p class="dialog-sub" id="dialog-sub"></p>
+    <label class="field"><span>Имя</span><input name="name" autocomplete="given-name" required><em class="error"></em></label>
+    <label class="field"><span>Телефон или почта</span><input name="contact" autocomplete="email" required><em class="error"></em></label>
+    <button class="btn btn-wide" type="submit" id="dialog-submit">Отправить</button>
+    <p class="receipt-note">Демо-форма: данные никуда не отправляются.</p>
+    <div class="dialog-done" hidden>
+      <p class="dialog-title" id="done-title"></p>
+      <p class="dialog-sub" id="done-text"></p>
+      <button class="btn" type="button" id="dialog-ok">Закрыть</button>
+    </div>
+  </form>
+</dialog>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <span class="logo">Кольцо+ <span>Architecture</span></span>
+        <p><a href="tel:+79000001280">+7 900 000-12-80</a><br>Ежедневно 10:00–20:00</p>
+      </div>
+      <nav aria-label="Посёлки"><p>Посёлки</p><a href="#v-blond">Blond Hills</a><a href="#v-hook">Северный Крюк</a><a href="#v-lake">Озёрная Линия</a></nav>
+      <nav aria-label="Покупка"><p>Покупка</p><a href="#select">Подбор дома</a><a href="#buy">Ипотека и рассрочка</a><a href="#buy">Трейд-ин</a><a href="#calc">Дом на вашем участке</a></nav>
+      <nav aria-label="Компания"><p>Компания</p><a href="#about">О компании</a><a href="#news">Новости</a><a href="#faq">Вопросы</a><a href="#visit">Контакты</a></nav>
+    </div>
+    <p class="footer-legal">Изображения на сайте — визуализации, использованы как иллюстрации. Информация не является публичной офертой. Концепт-лендинг: дизайн и вёрстка — <a href="../../index.html">dysphoblond</a>; компания, посёлки, цены, новости и кейс вымышлены.</p>
+  </div>
+</footer>
+
+<script src="script.js?v=13"></script>
+</body>
+</html>

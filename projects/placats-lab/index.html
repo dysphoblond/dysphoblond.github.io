@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121214">
+<title>Placats Lab</title>
+<meta name="description" content="Генератор градиентных постеров с зерном: шум Перлина, искажение координат, своя палитра. Экспорт PNG до 4800 px.">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+<div class="lab">
+  <header class="top">
+    <p class="logo">Placats <span>Lab</span></p>
+    <p class="tagline">Генератор постеров для <a href="https://t.me/placatsshopTEST_bot" target="_blank" rel="noopener">Placats shop</a></p>
+    <a class="back" href="../../index.html#more">← в портфолио</a>
+  </header>
+
+  <section class="stage" aria-label="Превью">
+    <canvas id="canvas" role="img" aria-label="Сгенерированный постер"></canvas>
+    <p class="stage-meta"><span id="meta-size"></span><span id="meta-time"></span></p>
+  </section>
+
+  <aside class="panel" aria-label="Настройки">
+    <div class="group">
+      <div class="group-head"><h2>Пресеты</h2><button class="ghost" type="button" id="random" title="Клавиша R">Случайный</button></div>
+      <div class="presets" id="presets"></div>
+    </div>
+
+    <div class="group">
+      <h2>Форма</h2>
+      <div class="seed-row">
+        <label for="seed">Зерно</label>
+        <input id="seed" type="number" min="1" max="99999" step="1">
+        <button class="ghost" type="button" id="reseed" title="Новое зерно">Новое</button>
+      </div>
+      <div id="sliders"></div>
+    </div>
+
+    <div class="group">
+      <div class="group-head"><h2>Палитра</h2><button class="ghost" type="button" id="reverse">Перевернуть</button></div>
+      <div class="swatches" id="swatches"></div>
+      <div class="ramp" id="ramp" aria-hidden="true"></div>
+      <label class="slider"><span>Оттенок <output id="hue-out"></output></span><input id="hue" type="range" min="-180" max="180" step="1"></label>
+    </div>
+
+    <div class="group">
+      <h2>Формат</h2>
+      <div class="chips" id="ratios"></div>
+    </div>
+
+    <div class="group export">
+      <h2>Экспорт PNG</h2>
+      <div class="chips" id="sizes"></div>
+      <button class="primary" type="button" id="download">Скачать PNG</button>
+      <div class="progress" id="progress" hidden><i></i></div>
+      <button class="ghost wide" type="button" id="share">Скопировать ссылку на этот постер</button>
+    </div>
+  </aside>
+</div>
+<script type="module" src="app.js?v=3"></script>
+</body>
+</html>
