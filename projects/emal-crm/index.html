@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Эмаль CRM — макет панели администратора клиники</title>
+<meta name="description" content="Макет CRM для стоматологической клиники: UI-кит, экраны для десктопа, планшета и телефона, кликабельный прототип.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../emal-kit/kit.css?v=3">
+<link rel="stylesheet" href="../emal-kit/canvas.css?v=3">
+</head>
+<body class="canvas">
+<div class="cv-wrap">
+  <header class="cv-head">
+    <div>
+      <p class="cv-crumbs"><a href="../../index.html#more">← Портфолио</a><span>/</span><span>Клиника «Эмаль»</span><span>/</span><span>CRM</span></p>
+      <h1 class="t-display">Эмаль CRM — панель администратора</h1>
+      <p>Рабочее место администратора стоматологии: расписание четырёх кресел на день, запись пациента за три поля, карточка с зубной формулой. Концепт для портфолио — клиника, люди и цены вымышлены.</p>
+    </div>
+    <div class="cv-actions"><a class="btn" href="app.html" target="_blank" rel="noopener">Открыть прототип ↗</a><a class="btn btn-secondary" href="../emal-app/index.html">Mini App для пациентов</a></div>
+  </header>
+
+  <section class="cv-section" aria-labelledby="kit-title">
+    <h2 class="t-h1" id="kit-title">UI-кит <small>общий для CRM и Mini App</small></h2>
+    <div id="kit"></div>
+  </section>
+
+  <section class="cv-section" aria-labelledby="frames-title">
+    <h2 class="t-h1" id="frames-title">Экраны <small>десктоп 1440 · планшет 834 · телефон 390</small></h2>
+    <p class="cv-note">Каждый фрейм — живой прототип в нужном состоянии. Нажмите на фрейм, чтобы открыть его в полном размере.</p>
+    <div id="frames"></div>
+  </section>
+
+  <section class="cv-section" aria-labelledby="flows-title">
+    <h2 class="t-h1" id="flows-title">Прототип <small>переходы, модальные окна, выпадающие списки</small></h2>
+    <ul class="flows" id="flows"></ul>
+  </section>
+</div>
+<script>
+window.CANVAS = {
+  app: 'app.html',
+  frames: [
+    { group: 'Десктоп · 1440', items: [
+      { title: 'Расписание дня', w: 1440, h: 900, scale: .45, q: '?f=1' },
+      { title: 'Детали записи', w: 1440, h: 900, scale: .45, q: '?modal=appt&appt=a4' },
+      { title: 'Новая запись — ошибки', w: 1440, h: 900, scale: .45, q: '?modal=new-error' },
+      { title: 'Фильтр врачей открыт', w: 1440, h: 900, scale: .45, q: '?menu=doctor' },
+      { title: 'Карточка пациента', w: 1440, h: 900, scale: .45, q: '?f=2#patient/p1' },
+      { title: 'Пациенты', w: 1440, h: 900, scale: .45, q: '?f=3#patients' },
+    ] },
+    { group: 'Планшет · 834', items: [
+      { title: 'Расписание', w: 834, h: 1112, scale: .42, q: '?f=4' },
+      { title: 'Карточка пациента', w: 834, h: 1112, scale: .42, q: '?f=5#patient/p1' },
+      { title: 'Список услуг открыт', w: 834, h: 1112, scale: .42, q: '?menu=service' },
+    ] },
+    { group: 'Телефон · 390', items: [
+      { title: 'Расписание врача', w: 390, h: 844, scale: .5, q: '?doc=d1' },
+      { title: 'Запись — шторка', w: 390, h: 844, scale: .5, q: '?modal=appt&appt=a4' },
+      { title: 'Карточка пациента', w: 390, h: 844, scale: .5, q: '?f=6#patient/p1' },
+      { title: 'Отмена записи', w: 390, h: 844, scale: .5, q: '?modal=cancel' },
+    ] },
+  ],
+  flows: [
+    ['Расписание', 'клик по записи', 'Детали записи (боковая панель)', '?modal=appt&appt=a4'],
+    ['Детали записи', '«Пациент пришёл» / «Завершить приём»', 'Статус меняется, тост', '?modal=appt&appt=a5'],
+    ['Детали записи', '«Отменить»', 'Окно подтверждения', '?modal=cancel'],
+    ['Расписание', '«Новая запись» или клик по свободному окну', 'Модальное окно записи', '?modal=new-error'],
+    ['Новая запись', 'выпадающие списки пациента, врача и услуги', 'Свободное время пересчитывается', '?menu=service'],
+    ['Шапка', 'выпадающий список «Все врачи»', 'В сетке остаётся один врач', '?menu=doctor'],
+    ['Детали записи', '«Открыть карточку»', 'Карточка пациента', '#patient/p1'],
+    ['Карточка пациента', 'клик по зубу', 'Описание лечения справа', '#patient/p1'],
+  ],
+};
+</script>
+<script src="../emal-kit/kit.js?v=3"></script>
+<script src="../emal-kit/canvas.js?v=1"></script>
+</body>
+</html>

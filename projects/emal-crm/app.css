@@ -1,0 +1,225 @@
+/* Эмаль CRM — раскладка. Десктоп ≥1100: боковое меню 232 px; планшет 721–1099: меню иконками;
+   телефон ≤720: меню снизу, расписание списком одного врача. */
+html,body{height:100%}
+.app{display:flex;min-height:100dvh}
+
+/* Боковое меню */
+.side{position:sticky;top:0;display:flex;flex-direction:column;gap:24px;width:232px;height:100dvh;flex:none;padding:20px 14px;border-right:1px solid var(--line);background:var(--surface)}
+.brand{display:flex;align-items:center;gap:10px;padding:0 6px;text-decoration:none}
+.brand-mark{display:grid;place-items:center;width:36px;height:36px;flex:none;border-radius:10px;background:var(--primary);color:var(--on-primary);font-weight:600;font-size:17px}
+.brand-text{display:flex;flex-direction:column;line-height:1.25}
+.brand-text b{font-weight:600}
+.brand-text small{color:var(--muted);font-size:12px}
+.side-nav{display:flex;flex-direction:column;gap:2px}
+.side-nav a{display:flex;align-items:center;gap:12px;min-height:42px;padding:0 12px;border-radius:var(--r-md);color:var(--muted);font-weight:500;text-decoration:none;transition:background .15s,color .15s}
+.side-nav a:hover{background:var(--surface-2);color:var(--text)}
+.side-nav a[aria-current="page"]{background:var(--bg);color:var(--text)}
+.side-nav .is-mute{opacity:.55}
+.side-user{display:flex;align-items:center;gap:10px;margin-top:auto;padding:12px 6px 0;border-top:1px solid var(--line)}
+.side-user span:last-child{display:flex;flex-direction:column;line-height:1.25}
+.side-user b{font-weight:500;font-size:14px}
+.side-user small{color:var(--muted);font-size:12px}
+.avatar{display:grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;background:var(--bg);border:1px solid var(--line);font-size:12px;font-weight:600;color:var(--muted)}
+.avatar-lg{width:64px;height:64px;font-size:20px;color:var(--text)}
+
+.main{flex:1;min-width:0;display:flex;flex-direction:column;padding:20px 24px 24px}
+.screen{display:flex;flex-direction:column;gap:16px;min-height:0;flex:1}
+.screen[hidden]{display:none}
+
+/* Верхняя панель */
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px}
+.top-title{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.date-nav{display:flex;align-items:center;gap:8px}
+.date-label{min-width:150px;text-align:center;color:var(--muted)}
+.date-label b{color:var(--text);font-weight:600}
+.top-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.doc-filter{width:220px}
+.search{position:relative;display:flex;align-items:center;width:240px}
+.search .ico{position:absolute;left:12px;color:var(--faint);pointer-events:none}
+.search .input{padding-left:38px}
+
+/* Цифры дня */
+.day-stats{display:flex;gap:10px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:2px;flex:1 1 160px;padding:12px 16px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.stat b{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.stat span{color:var(--muted);font-size:13px}
+.stat-bar{display:flex;height:4px;margin-top:6px;border-radius:999px;overflow:hidden;background:var(--line)}
+.stat-bar i{display:block;height:100%}
+
+/* Сетка расписания: колонка времени + колонка на врача */
+.board{flex:1;min-height:0;display:flex;flex-direction:column}
+.grid-wrap{flex:1;min-height:420px;overflow:auto;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.grid{--slot:44px;display:flex;min-width:max-content;position:relative}
+.time-col{position:sticky;left:0;z-index:3;flex:none;width:64px;background:var(--surface);border-right:1px solid var(--line)}
+.col{flex:1 0 220px;min-width:220px;border-right:1px solid var(--line)}
+.col:last-child{border-right:0}
+.col-head,.time-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:10px;height:64px;padding:0 14px;border-bottom:1px solid var(--line);background:var(--surface)}
+.time-head{z-index:4}
+.col-head b{display:block;font-weight:600;font-size:14px;line-height:1.25}
+.col-head small{display:block;color:var(--muted);font-size:12px;line-height:1.3}
+.col-body{position:relative;height:calc(var(--slot) * 22);background:repeating-linear-gradient(180deg,transparent 0 calc(var(--slot) - 1px),var(--line) calc(var(--slot) - 1px) var(--slot))}
+.col-body::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 calc(var(--slot) * 2 - 1px),#d6d9d3 calc(var(--slot) * 2 - 1px) calc(var(--slot) * 2));pointer-events:none}
+.time-body{position:relative;height:calc(var(--slot) * 22)}
+.time-body span{position:absolute;right:10px;transform:translateY(-50%);color:var(--faint);font-size:12px}
+.time-body span:first-child{transform:translateY(4px)}
+.free{position:absolute;left:6px;right:6px;z-index:1;display:flex;align-items:center;justify-content:center;border:1px dashed transparent;border-radius:var(--r-sm);color:transparent;font-size:12px;background:none;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.free:hover,.free:focus-visible{border-color:var(--line-strong);color:var(--muted);background:var(--surface-2)}
+.appt{position:absolute;left:6px;right:6px;z-index:2;display:flex;flex-direction:column;gap:1px;overflow:hidden;padding:6px 10px 6px 12px;border:1px solid var(--line);border-left:3px solid var(--st);border-radius:var(--r-sm);background:var(--st-soft);text-align:left;cursor:pointer;transition:box-shadow .15s,transform .15s}
+.appt:hover{box-shadow:0 4px 14px rgba(22,24,27,.1);transform:translateY(-1px)}
+.appt[aria-pressed="true"]{box-shadow:0 0 0 2px var(--accent)}
+.appt b{font-weight:600;font-size:13px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.appt span{color:var(--muted);font-size:12px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.appt.is-short{flex-direction:row;align-items:center;gap:8px}
+.appt.is-error b{text-decoration:line-through;color:var(--muted)}
+.st-ok{--st:var(--ok);--st-soft:var(--ok-soft)}
+.st-wait{--st:var(--wait);--st-soft:var(--wait-soft)}
+.st-arrived{--st:var(--arrived);--st-soft:var(--arrived-soft)}
+.st-error{--st:var(--error);--st-soft:#fbf3f1}
+.st-done{--st:#9aa0a5;--st-soft:var(--surface-2)}
+.now{position:absolute;left:0;right:0;z-index:5;height:0;border-top:2px solid var(--error);pointer-events:none}
+.now::before{content:attr(data-time);position:absolute;left:4px;top:-11px;padding:1px 6px;border-radius:999px;background:var(--error);color:#fff;font-size:11px;font-weight:600}
+.agenda{display:none}
+
+/* Таблица пациентов */
+.table-card{overflow:hidden}
+.table{width:100%;border-collapse:collapse}
+.table th{padding:12px 16px;border-bottom:1px solid var(--line);background:var(--surface-2);color:var(--muted);font-size:12px;font-weight:500;text-align:left;white-space:nowrap}
+.table td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+.table tr:last-child td{border-bottom:0}
+.table .num{text-align:right}
+.table tbody tr{cursor:pointer;transition:background .15s}
+.table tbody tr:hover{background:var(--surface-2)}
+.who{display:flex;align-items:center;gap:12px}
+.who b{display:block;font-weight:500}
+.who small{display:block;color:var(--muted);font-size:12px}
+.debt{color:var(--error);font-weight:500}
+
+/* Карточка пациента */
+.back{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;color:var(--muted);text-decoration:none;font-weight:500}
+.back:hover{color:var(--text)}
+.pc-head{flex-direction:row;align-items:center;gap:18px;padding:20px}
+.pc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.pc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:12px;font-weight:500}
+.tag-alert{background:var(--error-soft);border-color:#f0c9c2;color:var(--error)}
+.pc-actions{display:flex;gap:10px}
+.tab-panel{display:flex;gap:16px;align-items:flex-start}
+.tab-panel[hidden]{display:none}
+.chart-wrap{flex:1;min-width:0;padding:24px;gap:20px;overflow-x:auto}
+.chart{display:flex;flex-direction:column;gap:10px;min-width:max-content}
+.jaw{display:flex;gap:6px;align-items:flex-end}
+.jaw.lower{align-items:flex-start}
+.jaw-half{display:flex;gap:6px}
+.jaw-gap{width:14px;border-left:1px dashed var(--line-strong);align-self:stretch}
+.tooth{display:flex;flex-direction:column;align-items:center;gap:4px;width:48px;padding:6px 0;border:1px solid transparent;border-radius:var(--r-sm);background:none;cursor:pointer;transition:border-color .15s,background .15s}
+.tooth:hover{border-color:var(--line-strong)}
+.tooth[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.tooth small{color:var(--muted);font-size:11px}
+.tooth svg{width:34px;height:42px}
+.tooth path{fill:#fff;stroke:#b7bbb4;stroke-width:1.2}
+.lower .tooth{flex-direction:column-reverse}
+.lower .tooth svg{transform:scaleY(-1)}
+.ts-filled path{fill:#e8eefc;stroke:var(--accent)}
+.ts-caries path{fill:var(--wait-soft);stroke:var(--wait)}
+.ts-crown path{fill:#f3efe4;stroke:#8c7a4b}
+.ts-implant path{fill:#eeeff0;stroke:#5f656b;stroke-dasharray:2 2}
+.ts-missing path{fill:none;stroke:var(--line-strong);stroke-dasharray:3 3}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;padding:0;list-style:none}
+.legend li{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}
+.legend i{width:14px;height:14px;border-radius:4px;border:1.2px solid}
+.tooth-info{width:300px;flex:none;padding:20px;gap:10px}
+.tooth-info h3{margin:0;font-size:18px;font-weight:600}
+.tooth-info dl{display:flex;flex-direction:column;margin:4px 0 0}
+.tooth-info dl div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.tooth-info dt{color:var(--muted)}
+.tooth-info dd{margin:0;text-align:right}
+.visits{margin:0;padding:8px 20px;list-style:none;width:100%}
+.visits li{display:flex;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.visits li:last-child{border-bottom:0}
+.visits time{width:110px;flex:none;color:var(--muted);font-size:14px}
+.visits .v-main{flex:1;min-width:0}
+.visits .v-main b{display:block;font-weight:500}
+.visits .v-main small{color:var(--muted);font-size:13px}
+.visits .v-sum{font-weight:500;white-space:nowrap}
+
+/* Модалки CRM */
+.row-2{display:flex;gap:12px}
+.row-2>*{flex:1}
+.slots{display:flex;flex-wrap:wrap;gap:8px}
+.slots .chip{min-width:72px}
+.new-sum{margin-right:auto}
+.modal-sm{width:min(420px,100%)}
+.is-drawer{justify-content:flex-end;padding:12px}
+.is-drawer .modal{width:min(420px,100%);height:100%;max-height:none;transform:translateX(24px)}
+.is-drawer.is-open .modal{transform:none}
+.appt-dl{display:flex;flex-direction:column;margin:0}
+.appt-dl div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.appt-dl dt{color:var(--muted)}
+.appt-dl dd{margin:0;text-align:right}
+.appt-who{display:flex;align-items:center;gap:12px}
+.appt-who b{display:block;font-size:17px;font-weight:600}
+.appt-who a{color:var(--accent);font-size:14px;text-decoration:none}
+.appt-who a:hover{text-decoration:underline}
+.appt-foot-stack{display:flex;flex-wrap:wrap;gap:8px;width:100%}
+.appt-foot-stack .btn{flex:1 1 auto}
+
+/* ---------- Планшет ---------- */
+@media (max-width:1099px){
+  .side{width:72px;padding:20px 12px;align-items:center}
+  .brand-text,.side-nav span,.side-user span:last-child{display:none}
+  .brand{padding:0}
+  .side-nav a{justify-content:center;padding:0;width:46px}
+  .side-user{padding:12px 0 0;justify-content:center}
+  .main{padding:16px 18px 20px}
+  .search{width:200px}
+  .doc-filter{width:190px}
+  .tooth-info{width:260px}
+  .tab-panel{flex-direction:column}
+  .tooth-info{width:100%}
+}
+/* ---------- Телефон ---------- */
+@media (max-width:720px){
+  .app{flex-direction:column}
+  .side{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:50;flex-direction:row;width:auto;height:auto;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-right:0;border-top:1px solid var(--line)}
+  .brand,.side-user{display:none}
+  .side-nav{flex-direction:row;flex:1;justify-content:space-around}
+  .side-nav a{flex-direction:column;gap:2px;width:auto;min-height:52px;padding:4px 10px;font-size:11px}
+  .side-nav span{display:block}
+  .main{padding:14px 14px 88px}
+  .top{align-items:stretch}
+  .top-title{justify-content:space-between;width:100%}
+  .top-tools{width:100%}
+  .doc-filter,.search{width:100%}
+  .top-tools .btn{display:none}
+  .date-label{min-width:0}
+  .day-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .stat{padding:10px 12px}
+  .stat b{font-size:19px}
+  .grid-wrap{display:none}
+  .agenda{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+  .agenda li{display:flex}
+  .agenda .appt{position:relative;left:auto;right:auto;flex:1;flex-direction:row;align-items:center;gap:12px;min-height:64px;padding:10px 14px}
+  .agenda .a-time{display:flex;flex-direction:column;width:52px;flex:none;color:var(--text)!important;font-weight:600;font-size:15px}
+  .agenda .a-time small{color:var(--muted);font-weight:400;font-size:12px}
+  .agenda .a-main{display:flex;flex-direction:column;min-width:0;flex:1}
+  .agenda .a-free{flex:1;display:flex;align-items:center;gap:12px;min-height:44px;padding:0 14px;border:1px dashed var(--line-strong);border-radius:var(--r-sm);background:none;color:var(--muted);font-size:14px;text-align:left;cursor:pointer}
+  .fab{position:fixed;right:16px;bottom:84px;z-index:45;width:56px;height:56px;padding:0;border-radius:50%;box-shadow:var(--shadow-pop)}
+  .table thead{display:none}
+  .table,.table tbody,.table tr,.table td{display:block}
+  .table tr{display:flex;flex-wrap:wrap;gap:4px 12px;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .table td{padding:0;border:0}
+  .table td:first-child{width:100%}
+  .table td:not(:first-child){color:var(--muted);font-size:13px}
+  .pc-head{flex-wrap:wrap}
+  .pc-actions{width:100%}
+  .pc-actions .btn{flex:1}
+  .chart-wrap{padding:16px}
+  .tooth{width:34px}
+  .tooth svg{width:24px;height:30px}
+  .row-2{flex-direction:column}
+  .is-drawer{padding:0;align-items:flex-end}
+  .is-drawer .modal{height:auto;max-height:86dvh;width:100%;border-radius:var(--r-xl) var(--r-xl) 0 0;transform:translateY(100%)}
+  .visits time{width:84px}
+}
+.fab{display:none}
+@media (max-width:720px){.fab{display:inline-flex}}

@@ -8,6 +8,7 @@
   const scoreView = game.querySelector('.game-score');
   const panel = game.querySelector('.game-panel');
   const [titleView, textView, hintView] = panel.querySelectorAll('p');
+  const startButton = panel.querySelector('.game-start');
   const bestView = panel.querySelector('.game-best-value');
   // Тексты панели — через переводчик (i18n.js), чтобы переключение RU / EN их подхватывало
   const say = (element, ru, vars) => window.I18N ? I18N.set(element, ru, vars) : (element.textContent = ru.replace('{n}', vars?.n ?? ''));
@@ -97,17 +98,35 @@
   };
   const speed = () => 200 + Math.min(score, 40) * 3.5;
 
-  function flap() {
+  // Старт, рестарт и продолжение — только кнопкой на панели; тап и пробел во время игры дают взмах
+  function start() {
     if (performance.now() < lockUntil) return;
-    if (paused) { paused = false; panel.hidden = true; last = 0; loop(); return; }
-    if (state === 'over') { reset(); state = 'ready'; }
-    if (state === 'ready') { state = 'play'; panel.hidden = true; last = 0; loop(); }
+    game.focus({ preventScroll: true }); // чтобы пробел сразу работал как взмах
+    panel.hidden = true;
+    if (paused) { paused = false; last = 0; loop(); return; }
+    if (state === 'over') reset();
+    state = 'play'; last = 0; loop();
+    game.classList.add('is-playing');
+    flap();
+  }
+
+  function showPanel(title, text, button) {
+    say(titleView, title);
+    say(textView, text.ru, text.vars);
+    say(startButton, button);
+    const hadFocus = document.activeElement === game;
+    panel.hidden = false;
+    if (hadFocus) startButton.focus({ preventScroll: true }); // клавиатура: Enter сразу запускает снова
+  }
+
+  function flap() {
+    if (state !== 'play' || paused) return;
     bird.vy = FLAP;
     for (let i = 0; i < 6; i++) sparks.push({ x: bird.x - BIRD_W * .3, y: bird.y + 4, vx: -60 - Math.random() * 90, vy: (Math.random() - .3) * 120, life: .45 });
   }
 
   function crash() {
-    state = 'over';
+    state = 'over'; game.classList.remove('is-playing');
     lockUntil = performance.now() + 450;
     for (let i = 0; i < 26; i++) sparks.push({ x: bird.x, y: bird.y, vx: (Math.random() - .5) * 420, vy: (Math.random() - .7) * 380, life: .8 });
     if (score > best) {
@@ -115,10 +134,7 @@
       try { localStorage.setItem('yp-flight-best', String(best)); } catch {}
     }
     bestView.textContent = best;
-    say(titleView, score > 0 && score === best ? 'Новый рекорд' : 'Падение');
-    say(textView, 'Счёт {n}. Нажми, чтобы ещё раз', { n: score });
-    say(hintView, 'пробел · клик · тап');
-    panel.hidden = false;
+    showPanel(score > 0 && score === best ? 'Новый рекорд' : 'Падение', { ru: 'Счёт {n}', vars: { n: score } }, 'Ещё раз');
   }
 
   function update(dt) {
@@ -140,7 +156,7 @@
     if (bird.y < BIRD_H / 2) { bird.y = BIRD_H / 2; bird.vy = 0; }
     bird.tilt = Math.max(-.45, Math.min(1.1, bird.vy / 650));
 
-    if (!pillars.length || pillars.at(-1).x < W - 300) spawn();
+    if (!pillars.length || pillars[pillars.length - 1].x < W - 300) spawn();
     for (const pillar of pillars) {
       pillar.x -= speed() * dt;
       if (!pillar.passed && pillar.x + PILLAR < bird.x) {
@@ -252,14 +268,16 @@
   }
 
   // Управление: клик/тап по игре, пробел/стрелка вверх, когда игра в фокусе
+  startButton.addEventListener('click', start);
   game.addEventListener('pointerdown', event => {
-    if (event.button > 0) return;
+    if (event.button > 0 || event.target.closest('.game-start')) return;
+    if (state !== 'play' || paused) return; // начать можно только кнопкой
     event.preventDefault();
     game.focus({ preventScroll: true });
     flap();
   });
   game.addEventListener('keydown', event => {
-    if (![' ', 'ArrowUp', 'w', 'W', 'Enter'].includes(event.key)) return;
+    if (event.target !== game || ![' ', 'ArrowUp', 'w', 'W'].includes(event.key)) return;
     event.preventDefault();
     if (!event.repeat) flap();
   });
@@ -268,9 +286,7 @@
   function hold() {
     if (state === 'play' && !paused) {
       paused = true;
-      say(titleView, 'Пауза');
-      say(textView, 'Нажми, чтобы продолжить');
-      panel.hidden = false;
+      showPanel('Пауза', { ru: 'Игра остановлена' }, 'Продолжить');
     }
   }
   if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => {

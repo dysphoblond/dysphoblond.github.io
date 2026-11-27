@@ -1,0 +1,133 @@
+/* Эмаль — Telegram Mini App. Мобайл 360–430 — основной; 768+ (Telegram Desktop, планшет) — шире, услуги в две колонки.
+   В Telegram цвета фона и текста берутся из темы клиента (--tg-theme-*), в демо — из кита. */
+body{background:var(--tg-theme-secondary-bg-color,var(--bg));color:var(--tg-theme-text-color,var(--text))}
+.tg{display:flex;flex-direction:column;min-height:100dvh;max-width:720px;margin:0 auto;background:var(--tg-theme-secondary-bg-color,var(--bg))}
+.tg-bar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:8px;min-height:56px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surface)}
+.tg-back{display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:50%;background:none;cursor:pointer}
+.tg-back:hover{background:var(--surface-2)}
+.tg-back[hidden]{display:none}
+.tg-title{display:flex;flex-direction:column;flex:1;line-height:1.2;padding-left:6px}
+.tg-title b{font-weight:600}
+.tg-title small{color:var(--muted);font-size:12px}
+.tg-dots{color:var(--faint);letter-spacing:2px;padding:0 6px}
+.is-telegram .tg-bar{display:none}
+
+.view{flex:1;padding:16px 16px 100px}
+.page{display:flex;flex-direction:column;gap:14px;animation:page-in .28s var(--ease) both}
+.page[hidden]{display:none}
+.page.is-back{animation-name:page-back}
+@keyframes page-in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes page-back{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.sec-title{margin:10px 0 -2px}
+.step{color:var(--accent);font-size:13px;font-weight:600}
+
+/* Главная */
+.hello{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.branch{width:200px}
+.next{padding:16px;gap:12px}
+.next-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.next-when{display:flex;align-items:baseline;gap:10px}
+.next-when b{font-size:28px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.next-when span{color:var(--muted)}
+.next-who{display:flex;align-items:center;gap:10px}
+.next-who b{display:block;font-weight:500}
+.next-who small{color:var(--muted);font-size:13px}
+.next-actions{display:flex;gap:8px}
+.next-actions .btn{flex:1}
+.next-empty{color:var(--muted)}
+.avatar{display:grid;place-items:center;width:40px;height:40px;flex:none;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted)}
+.services{display:flex;flex-direction:column;margin:0;padding:0;list-style:none;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);overflow:hidden}
+.services li+li{border-top:1px solid var(--line)}
+.svc{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:12px 14px;border:0;background:none;text-align:left;cursor:pointer;transition:background .15s}
+.svc:hover{background:var(--surface-2)}
+.svc:active{background:var(--line)}
+.svc-main{flex:1;min-width:0;display:flex;flex-direction:column}
+.svc-main b{font-weight:500}
+.svc-main small{color:var(--muted);font-size:13px}
+.svc-price{font-weight:600;white-space:nowrap}
+.svc .ico{color:var(--faint)}
+.doctors{display:flex;gap:10px;margin:0 -16px;padding:0 16px 4px;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.doctors li{flex:0 0 150px;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.doctors .avatar{width:48px;height:48px;font-size:15px;color:var(--text)}
+.doctors b{font-weight:500;line-height:1.25}
+.doctors small{color:var(--muted);font-size:12px;line-height:1.35}
+
+/* Выбор врача */
+.pick-list{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.pick{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);text-align:left;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.pick:hover{border-color:var(--line-strong)}
+.pick[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.pick .avatar{width:48px;height:48px;color:var(--text)}
+.pick-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.pick-main b{font-weight:600}
+.pick-main small{color:var(--muted);font-size:13px}
+.pick-near{display:inline-flex;align-self:flex-start;margin-top:4px;padding:2px 8px;border-radius:999px;background:var(--ok-soft);color:var(--ok);font-size:12px;font-weight:500}
+.radio{width:22px;height:22px;flex:none;border:1.5px solid var(--line-strong);border-radius:50%;transition:border .15s}
+.pick[aria-pressed="true"] .radio{border:7px solid var(--accent)}
+
+/* Дата и время */
+.days{display:flex;gap:8px;margin:0 -16px;padding:2px 16px 4px;overflow-x:auto;scrollbar-width:none}
+.day{display:flex;flex-direction:column;align-items:center;gap:2px;flex:0 0 56px;padding:10px 0;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+.day small{color:var(--muted);font-size:12px}
+.day b{font-size:18px;font-weight:600}
+.day:hover{border-color:var(--line-strong)}
+.day[aria-pressed="true"]{border-color:var(--primary);background:var(--primary);color:var(--on-primary)}
+.day[aria-pressed="true"] small{color:#c9ccc5}
+.day:disabled{opacity:.45;cursor:not-allowed}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.slots .chip{min-width:0;padding:0}
+.slot-group{grid-column:1/-1;margin-top:6px;color:var(--muted);font-size:13px;font-weight:500}
+
+/* Подтверждение */
+.summary{margin:0;padding:4px 16px}
+.summary div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.summary div:last-child{border-bottom:0}
+.summary dt{color:var(--muted)}
+.summary dd{margin:0;text-align:right;font-weight:500}
+.form{display:flex;flex-direction:column;gap:14px}
+
+/* Готово */
+.done{display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 0 8px;text-align:center}
+.done-mark{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--ok-soft)}
+.done-mark svg{width:40px;height:40px;fill:none;stroke:var(--ok);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:tick .5s var(--ease) .15s forwards}
+@keyframes tick{to{stroke-dashoffset:0}}
+.done-actions{display:flex;flex-direction:column;gap:10px}
+.done-addr{text-align:center}
+
+/* Мои записи */
+.mine{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.mine li{display:flex;flex-direction:column;gap:10px;padding:14px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface)}
+.mine-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mine-top b{font-weight:600}
+.mine small{color:var(--muted);font-size:13px}
+.mine-actions{display:flex;gap:8px}
+.mine-actions .btn{flex:1}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+
+/* Нижние панели */
+.tabbar,.main-btn{position:fixed;left:0;right:0;bottom:0;z-index:30;max-width:720px;margin:0 auto;border-top:1px solid var(--line);background:var(--surface)}
+.tabbar{display:flex;padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+.tabbar[hidden],.main-btn[hidden]{display:none}
+.tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:52px;border:0;border-radius:var(--r-md);background:none;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer}
+.tabbar button[aria-current="page"]{color:var(--text);background:var(--surface-2)}
+.main-btn{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.is-telegram .main-btn{display:none}
+.sheet-foot{flex-direction:column}
+
+/* Широкий экран: Telegram Desktop и планшет */
+@media (min-width:640px){
+  .view{padding:24px 28px 110px}
+  .services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .services li+li{border-top:0}
+  .services li{border-bottom:1px solid var(--line)}
+  .services li:nth-child(odd){border-right:1px solid var(--line)}
+  .services li:nth-last-child(-n+2){border-bottom:0}
+  .doctors{margin:0;padding:0 0 4px}
+  .pick-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .slots{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .main-btn{padding:12px 28px}
+}
+@media (max-width:360px){
+  .slots{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .branch{width:100%}
+}

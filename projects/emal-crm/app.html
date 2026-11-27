@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f1f2ef">
+<title>Эмаль CRM — расписание клиники</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../emal-kit/kit.css?v=3">
+<link rel="stylesheet" href="app.css?v=2">
+</head>
+<body>
+<div class="app">
+  <!-- Навигация: слева на десктопе, иконками на планшете, снизу на телефоне -->
+  <aside class="side" aria-label="Разделы">
+    <a class="brand" href="#schedule"><span class="brand-mark" aria-hidden="true">Э</span><span class="brand-text"><b>Эмаль</b><small>Клиника на Литейном</small></span></a>
+    <nav class="side-nav">
+      <a href="#schedule" data-nav="schedule"><svg class="ico" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Расписание</span></a>
+      <a href="#patients" data-nav="patients"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c2 .7 3.2 2.4 3.5 5.2"/></svg><span>Пациенты</span></a>
+      <a href="#schedule" data-nav="doctors" class="is-mute"><svg class="ico" viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3M12 15v2a4 4 0 0 0 8 0v-2"/><circle cx="20" cy="13" r="2"/></svg><span>Врачи</span></a>
+      <a href="#schedule" data-nav="cash" class="is-mute"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span>Касса</span></a>
+    </nav>
+    <div class="side-user"><span class="avatar">ОК</span><span><b>Ольга Кравец</b><small>Администратор</small></span></div>
+  </aside>
+
+  <main class="main">
+    <!-- ===== Расписание ===== -->
+    <section class="screen" id="screen-schedule" aria-labelledby="sch-title">
+      <header class="top">
+        <div class="top-title">
+          <h1 class="t-h1" id="sch-title">Расписание</h1>
+          <div class="date-nav">
+            <button class="btn btn-icon" type="button" id="day-prev" aria-label="Предыдущий день"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <span class="date-label"><b>27 ноября</b>, пятница</span>
+            <button class="btn btn-icon" type="button" id="day-next" aria-label="Следующий день"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="top-tools">
+          <div class="doc-filter" id="doc-filter"></div>
+          <label class="search"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg><input class="input" type="search" placeholder="Пациент или телефон" id="sch-search" aria-label="Поиск по записям"></label>
+          <button class="btn" type="button" data-open-new><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Новая запись</span></button>
+        </div>
+      </header>
+
+      <div class="day-stats" id="day-stats"></div>
+
+      <div class="board">
+        <div class="grid-wrap" id="grid-wrap">
+          <div class="grid" id="grid"></div>
+        </div>
+        <!-- Список на телефоне: записи выбранного врача по порядку -->
+        <ol class="agenda" id="agenda"></ol>
+      </div>
+    </section>
+
+    <!-- ===== Пациенты ===== -->
+    <section class="screen" id="screen-patients" aria-labelledby="pat-title" hidden>
+      <header class="top">
+        <div class="top-title"><h1 class="t-h1" id="pat-title">Пациенты</h1><span class="t-caption" id="pat-count"></span></div>
+        <div class="top-tools">
+          <label class="search"><svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg><input class="input" type="search" placeholder="Имя или телефон" id="pat-search" aria-label="Поиск пациента"></label>
+          <button class="btn" type="button" data-open-new><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Новая запись</span></button>
+        </div>
+      </header>
+      <div class="card table-card">
+        <table class="table">
+          <thead><tr><th>Пациент</th><th>Телефон</th><th>Последний визит</th><th>Следующий визит</th><th class="num">Баланс</th></tr></thead>
+          <tbody id="pat-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Карточка пациента ===== -->
+    <section class="screen" id="screen-patient" aria-labelledby="pc-name" hidden>
+      <a class="back" href="#patients"><svg class="ico" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Пациенты</a>
+      <header class="pc-head card">
+        <span class="avatar avatar-lg" id="pc-initials"></span>
+        <div class="pc-main">
+          <h1 class="t-h1" id="pc-name"></h1>
+          <p class="t-caption" id="pc-meta"></p>
+          <div class="pc-tags" id="pc-tags"></div>
+        </div>
+        <div class="pc-actions">
+          <a class="btn btn-secondary" id="pc-call" href="#"><svg viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.4-2.2 1.4a11 11 0 0 0 6.1 6.1l1.4-2.2L20 15.5V19a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>Позвонить</a>
+          <button class="btn" type="button" data-open-new data-patient-from-card>Записать</button>
+        </div>
+      </header>
+      <div class="tabs" role="tablist" aria-label="Разделы карточки">
+        <button class="tab" role="tab" aria-selected="true" data-tab="chart">Зубная формула</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="visits">Визиты</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="pay">Оплаты</button>
+      </div>
+      <div class="tab-panel" data-panel="chart">
+        <div class="chart-wrap card">
+          <div class="chart" id="chart" aria-label="Зубная формула: нажмите на зуб"></div>
+          <ul class="legend" id="legend"></ul>
+        </div>
+        <aside class="tooth-info card" id="tooth-info" aria-live="polite"></aside>
+      </div>
+      <div class="tab-panel" data-panel="visits" hidden><ol class="visits card" id="visits"></ol></div>
+      <div class="tab-panel" data-panel="pay" hidden><div class="card table-card"><table class="table"><thead><tr><th>Дата</th><th>Услуга</th><th>Способ</th><th class="num">Сумма</th></tr></thead><tbody id="pays"></tbody></table></div></div>
+    </section>
+  </main>
+</div>
+
+<!-- Детали записи: справа на десктопе, шторкой на телефоне -->
+<div class="overlay is-drawer" id="appt" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="appt-title">
+    <div class="modal-head"><h2 class="t-h2" id="appt-title">Запись</h2><button class="btn btn-icon" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="modal-body" id="appt-body"></div>
+    <div class="modal-foot" id="appt-foot"></div>
+  </div>
+</div>
+
+<!-- Новая запись -->
+<div class="overlay" id="new" aria-hidden="true">
+  <form class="modal" role="dialog" aria-modal="true" aria-labelledby="new-title" id="new-form" novalidate>
+    <div class="modal-head"><h2 class="t-h2" id="new-title">Новая запись</h2><button class="btn btn-icon" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="modal-body">
+      <div class="field" id="f-patient"><span class="field-label">Пациент</span><div id="s-patient"></div><span class="field-hint">Начните с фамилии — список отсортирован</span></div>
+      <div class="row-2">
+        <div class="field"><span class="field-label">Врач</span><div id="s-doctor"></div></div>
+        <div class="field"><span class="field-label">Услуга</span><div id="s-service"></div></div>
+      </div>
+      <div class="field" id="f-time"><span class="field-label">Время, 27 ноября</span><div class="slots" id="slots"></div><span class="field-hint" id="time-hint">Серые — заняты</span></div>
+      <label class="field"><span class="field-label">Комментарий</span><textarea class="input" name="note" placeholder="Например: боится уколов, нужна анестезия без адреналина"></textarea></label>
+    </div>
+    <div class="modal-foot"><span class="new-sum t-caption" id="new-sum"></span><button class="btn btn-secondary" type="button" data-close>Отмена</button><button class="btn" type="submit">Записать</button></div>
+  </form>
+</div>
+
+<!-- Подтверждение отмены -->
+<div class="overlay" id="cancel" aria-hidden="true">
+  <div class="modal modal-sm" role="alertdialog" aria-modal="true" aria-labelledby="cancel-title">
+    <div class="modal-head"><h2 class="t-h2" id="cancel-title">Отменить запись?</h2></div>
+    <div class="modal-body"><p id="cancel-text"></p></div>
+    <div class="modal-foot"><button class="btn btn-secondary" type="button" data-close>Не отменять</button><button class="btn btn-danger" type="button" id="cancel-yes">Отменить запись</button></div>
+  </div>
+</div>
+
+<script src="../emal-kit/kit.js?v=3"></script>
+<script src="app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Эмаль — макет Telegram Mini App для записи к стоматологу</title>
+<meta name="description" content="Макет Telegram Mini App клиники: запись в три шага, перенос и отмена. UI-кит, экраны 360, 390 и 768, кликабельный прототип.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../emal-kit/kit.css?v=3">
+<link rel="stylesheet" href="../emal-kit/canvas.css?v=3">
+</head>
+<body class="canvas">
+<div class="cv-wrap">
+  <header class="cv-head">
+    <div>
+      <p class="cv-crumbs"><a href="../../index.html#more">← Портфолио</a><span>/</span><span>Клиника «Эмаль»</span><span>/</span><span>Telegram Mini App</span></p>
+      <h1 class="t-display">Эмаль — запись в Telegram</h1>
+      <p>Мини-приложение для пациентов: записаться в три шага, перенести или отменить визит, не выходя из чата клиники. В Telegram использует нативные кнопки «Назад» и главную кнопку, тему клиента и виброотклик. Концепт для портфолио.</p>
+    </div>
+    <div class="cv-actions"><a class="btn" href="app.html" target="_blank" rel="noopener">Открыть прототип ↗</a><a class="btn btn-secondary" href="../emal-crm/index.html">CRM для администратора</a></div>
+  </header>
+
+  <section class="cv-section" aria-labelledby="kit-title">
+    <h2 class="t-h1" id="kit-title">UI-кит <small>общий для CRM и Mini App</small></h2>
+    <div id="kit"></div>
+  </section>
+
+  <section class="cv-section" aria-labelledby="frames-title">
+    <h2 class="t-h1" id="frames-title">Экраны <small>телефон 390 и 360 · Telegram Desktop 768</small></h2>
+    <p class="cv-note">Каждый фрейм — живой прототип в нужном состоянии. Нажмите на фрейм, чтобы открыть его в полном размере.</p>
+    <div id="frames"></div>
+  </section>
+
+  <section class="cv-section" aria-labelledby="flows-title">
+    <h2 class="t-h1" id="flows-title">Прототип <small>переходы, нижняя шторка, выпадающий список</small></h2>
+    <ul class="flows" id="flows"></ul>
+  </section>
+</div>
+<script>
+window.CANVAS = {
+  app: 'app.html',
+  frames: [
+    { group: 'Телефон · 390', items: [
+      { title: 'Главная', w: 390, h: 844, scale: .55, q: '?f=1' },
+      { title: 'Выбор филиала', w: 390, h: 844, scale: .55, q: '?menu=branch' },
+      { title: 'Шаг 1 — врач', w: 390, h: 844, scale: .55, q: '?page=doctor' },
+      { title: 'Шаг 2 — дата и время', w: 390, h: 844, scale: .55, q: '?page=time' },
+      { title: 'Шаг 3 — ошибка телефона', w: 390, h: 844, scale: .55, q: '?page=confirm&err=1' },
+      { title: 'Готово', w: 390, h: 844, scale: .55, q: '?page=done' },
+      { title: 'Мои записи', w: 390, h: 844, scale: .55, q: '?page=mine' },
+      { title: 'Отмена — шторка', w: 390, h: 844, scale: .55, q: '?modal=cancel' },
+    ] },
+    { group: 'Маленький телефон · 360', items: [
+      { title: 'Главная', w: 360, h: 780, scale: .55, q: '?f=2' },
+      { title: 'Дата и время', w: 360, h: 780, scale: .55, q: '?page=time&f=2' },
+    ] },
+    { group: 'Telegram Desktop и планшет · 768', items: [
+      { title: 'Главная', w: 768, h: 1024, scale: .45, q: '?f=3' },
+      { title: 'Дата и время', w: 768, h: 1024, scale: .45, q: '?page=time&f=3' },
+    ] },
+  ],
+  flows: [
+    ['Главная', 'клик по услуге с несколькими врачами', 'Шаг 1 — врач', '?page=doctor'],
+    ['Главная', 'клик по услуге с одним врачом', 'Шаг 2 — время (врач выбран сам)', '?page=time'],
+    ['Шаг 1', 'выбор врача → главная кнопка', 'Шаг 2 — дата и время', '?page=time'],
+    ['Шаг 2', 'день и окно → «Продолжить»', 'Шаг 3 — проверка', '?page=confirm&filled=1'],
+    ['Шаг 3', '«Записаться» без телефона', 'Ошибка поля, виброотклик', '?page=confirm&err=1'],
+    ['Шаг 3', '«Записаться»', 'Готово → на главную', '?page=done'],
+    ['Главная', 'выпадающий список филиала', 'Филиал меняется, тост', '?menu=branch'],
+    ['Главная / Мои записи', '«Отменить»', 'Нижняя шторка подтверждения', '?modal=cancel'],
+    ['Любой шаг', 'кнопка «Назад»', 'Предыдущий шаг, анимация в обратную сторону', '?page=time'],
+  ],
+};
+</script>
+<script src="../emal-kit/kit.js?v=3"></script>
+<script src="../emal-kit/canvas.js?v=1"></script>
+</body>
+</html>

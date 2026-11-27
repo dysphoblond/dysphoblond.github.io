@@ -7,7 +7,7 @@
 ## Что внутри
 
 - **Обложка** — пиксельный постер с живыми облаками и логотипом; слово после «Your» сменяется (Design, Sites, Bots, Landings…). Нажми на крюк — логотип вспыхнет, и страница уедет к работам.
-- **Плакаты и дизайн постов** — превью на главной и [галерея](https://dysphoblond.github.io/gallery.html) со всеми работами.
+- **Плакаты и дизайн** — превью на главной и [галерея](https://dysphoblond.github.io/gallery.html) со всеми работами.
 - **Проекты**
   - [Ears of God](https://dysphoblond.github.io/projects/dysph-audio/) — концепт-лендинг мастерской hi-end колонок: сцены моделей на весь экран, интерактивный разрез, график АЧХ, карта залов.
   - [Кольцо+ Architecture](https://dysphoblond.github.io/projects/dysph-house/) — лендинг бюро загородных домов.

@@ -93,7 +93,7 @@
     let active = null;
     for (const [link, section] of sections) if (section.getBoundingClientRect().top <= innerHeight * .3) active = link;
     // Последний раздел до трети окна не доезжает — у самого низа страницы подсвечиваем его
-    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) active = sections.at(-1)?.[0] ?? active;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) active = sections[sections.length - 1]?.[0] ?? active;
     if (active === current) return;
     current = active;
     for (const [link] of sections) link.toggleAttribute('aria-current', link === active);
