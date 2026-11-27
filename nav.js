@@ -4,7 +4,7 @@
   if (!bar) return;
   const SHOW_AFTER = 80;
   const links = [...bar.querySelectorAll('.topbar-nav a')];
-  let returning = false, returnTimer = 0, pinned = false;
+  let returning = false, returnTimer = 0, pinned = false, locked = false;
   const nav = bar.querySelector('.topbar-nav');
   let pending = false, current;
 
@@ -34,32 +34,119 @@
   };
   addEventListener('scroll', update, { passive: true });
   // Пользователь сам крутит страницу — перестаём ждать возврата наверх
-  for (const type of ['wheel', 'touchmove', 'keydown']) addEventListener(type, () => { returning = false; }, { passive: true });
+  for (const type of ['wheel', 'touchmove', 'keydown']) addEventListener(type, () => { if (!locked) returning = false; }, { passive: true });
 
-  // Крюк: логотип вспыхивает светом, и только потом страница едет к разделам.
-  // Без анимации (FX OFF или «уменьшить движение») — обычный переход по якорю сразу.
+  // Крюк и прокрутка с постера: логотип вспыхивает светом, и только потом страница едет к разделам.
+  // Обратно — прокрутка вверх от начала разделов просто возвращает на постер, без вспышки.
+  // Без анимации (FX OFF или «уменьшить движение») — тот же скачок, но без вспышки.
   const hook = document.querySelector('.hook');
   const stage = document.querySelector('.poster-stage');
   const designSection = document.querySelector('#design');
   const FLASH_PEAK = 420; // мс: прокрутка стартует, когда вспышка уже гаснет
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const calm = () => reduce.matches || document.documentElement.classList.contains('fx-off');
   let flashTimer = 0;
-  hook?.addEventListener('click', event => {
-    pinned = true; returning = false; show(true);
-    const calm = document.documentElement.classList.contains('fx-off') || matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (calm || !stage || !designSection) return;
-    event.preventDefault();
-    if (flashTimer) return; // повторный клик во время вспышки ничего не перезапускает
+
+  function flash() {
+    if (!stage || calm()) return;
     stage.classList.remove('is-flashing');
     void stage.offsetWidth; // перезапуск анимации
     stage.classList.add('is-flashing');
-    flashTimer = setTimeout(() => {
-      flashTimer = 0;
-      history.pushState(null, '', '#design');
-      designSection.scrollIntoView({ behavior: 'smooth' });
-      designSection.focus({ preventScroll: true });
-    }, FLASH_PEAK);
-  });
+  }
   stage?.addEventListener('animationend', event => { if (event.animationName === 'stage-flash') stage.classList.remove('is-flashing'); });
+
+  // Где окажется страница, когда раздел «Дизайн» доедет до верха (с учётом отступа под строку меню)
+  const sectionsTop = () => designSection.getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(designSection).scrollMarginTop) || 0);
+
+  // Пока идёт скачок, колесо, свайп и клавиши не мешают: инерция тачпада не утаскивает страницу дальше
+  let lastInput = 0;
+  function lockUntilArrived(dest) {
+    locked = true;
+    const started = performance.now();
+    const wait = () => {
+      const now = performance.now();
+      const arrived = Math.abs(scrollY - dest()) < 3;
+      // отпускаем, когда доехали и инерция стихла (нет ввода 220 мс), но не позже чем через 2 с
+      if ((arrived && now - lastInput > 220) || now - started > 2000) { locked = false; return; }
+      requestAnimationFrame(wait);
+    };
+    requestAnimationFrame(wait);
+  }
+
+  function goSections({ fromHook = false } = {}) {
+    if (!designSection || flashTimer) return;
+    pinned = true; returning = false; show(true);
+    lockUntilArrived(sectionsTop);
+    const go = () => {
+      flashTimer = 0;
+      if (fromHook) history.pushState(null, '', '#design');
+      designSection.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth' });
+      designSection.focus({ preventScroll: true });
+    };
+    if (calm() || !stage) { go(); return; }
+    flash();
+    flashTimer = setTimeout(go, FLASH_PEAK);
+  }
+
+  function goPoster() {
+    if (flashTimer) return;
+    returning = true; pinned = false; show(false);
+    clearTimeout(returnTimer);
+    returnTimer = setTimeout(() => { returning = false; }, 2000);
+    history.replaceState(null, '', location.pathname + location.search);
+    lockUntilArrived(() => 0);
+    scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' }); // наверх без вспышки
+  }
+
+  hook?.addEventListener('click', event => {
+    event.preventDefault();
+    goSections({ fromHook: true });
+  });
+
+  // Прокрутка в зоне постера: вниз — скачок к разделам, вверх от начала разделов — скачок на постер.
+  // Возвращает true, если скачок сработал (тогда обычную прокрутку отменяем)
+  function intent(down) {
+    if (!designSection || !stage) return false;
+    const y = scrollY, target = sectionsTop();
+    if (down && y < target - 4) { goSections(); return true; }
+    if (!down && y > 2 && y <= target + 4) { goPoster(); return true; }
+    return false;
+  }
+  const busyTarget = el => el?.closest?.('input, textarea, select, [contenteditable], .game, dialog[open]');
+
+  addEventListener('wheel', event => {
+    lastInput = performance.now();
+    if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || busyTarget(event.target)) return;
+    if (locked) { event.preventDefault(); return; }
+    if (event.deltaY && intent(event.deltaY > 0)) event.preventDefault();
+  }, { passive: false });
+
+  // Свайп на телефоне: в зоне постера родную прокрутку не запускаем, а решаем по направлению пальца
+  let touchY = null, touchDone = false;
+  addEventListener('touchstart', event => {
+    lastInput = performance.now();
+    touchY = event.touches.length === 1 ? event.touches[0].clientY : null;
+    touchDone = false;
+  }, { passive: true });
+  addEventListener('touchmove', event => {
+    lastInput = performance.now();
+    if (touchY === null || event.touches.length !== 1 || busyTarget(event.target)) return;
+    if (locked || touchDone) { if (event.cancelable) event.preventDefault(); return; }
+    if (!designSection || scrollY > sectionsTop() + 4) return; // ниже начала разделов — обычная прокрутка
+    const dy = touchY - event.touches[0].clientY;
+    if (Math.abs(dy) < 8) { if (event.cancelable) event.preventDefault(); return; }
+    if (intent(dy > 0)) { touchDone = true; if (event.cancelable) event.preventDefault(); }
+  }, { passive: false });
+
+  addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || busyTarget(event.target) || event.target.closest?.('button, a, [role="application"]') && event.key === ' ') return;
+    const down = ['ArrowDown', 'PageDown'].includes(event.key) || (event.key === ' ' && !event.shiftKey);
+    const up = ['ArrowUp', 'PageUp'].includes(event.key) || (event.key === ' ' && event.shiftKey);
+    if (!down && !up) return;
+    lastInput = performance.now();
+    if (locked) { event.preventDefault(); return; }
+    if (intent(down)) event.preventDefault();
+  });
 
   const toTop = event => {
     event.preventDefault();

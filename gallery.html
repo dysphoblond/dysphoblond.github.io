@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><title>Плакаты и Дизайн: галерея — Your Potential</title><link rel="stylesheet" href="style.css?v=36"></head>
-<body class="gallery-page">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><title>Плакаты и Дизайн: галерея — Your Potential</title><link rel="stylesheet" href="style.css?v=42"><link rel="stylesheet" href="transition.css?v=1"></head>
+<body class="gallery-page"><svg class="sr" width="0" height="0" aria-hidden="true" focusable="false"><defs><!-- Лёгкая «пикселизация» заголовков: шрифт тот же, края букв ступеньками по 3 px, как растр постера. Берём по одной точке из каждой клетки 3×3, растягиваем её на всю клетку и смешиваем с исходным гладким текстом примерно пополам — ступеньки видны, но мягко --><filter id="pixel-title" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB"><feFlood x="1" y="1" width="1" height="1" flood-color="#fff"/><feComposite width="3" height="3"/><feTile result="grid"/><feComposite in="SourceGraphic" in2="grid" operator="in"/><feMorphology operator="dilate" radius="1" result="blocks"/><feComponentTransfer in="blocks" result="b2"><feFuncA type="linear" slope=".5"/></feComponentTransfer><feComponentTransfer in="SourceGraphic" result="soft"><feFuncA type="linear" slope=".78"/></feComponentTransfer><feMerge result="mix"><feMergeNode in="soft"/><feMergeNode in="b2"/></feMerge><feComponentTransfer in="mix"><feFuncA type="linear" slope="1.12"/></feComponentTransfer></filter><!-- Для текста помельче (30–50 px): ступенька 2 px, иначе буквы рассыпаются --><filter id="pixel-text" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB"><feFlood x="0" y="0" width="1" height="1" flood-color="#fff"/><feComposite width="2" height="2"/><feTile result="grid"/><feComposite in="SourceGraphic" in2="grid" operator="in"/><feConvolveMatrix order="2" kernelMatrix="1 1 1 1" divisor="1" targetX="1" targetY="1" edgeMode="none" preserveAlpha="false" result="blocks"/><feComponentTransfer in="blocks" result="b2"><feFuncA type="linear" slope=".42"/></feComponentTransfer><feComponentTransfer in="SourceGraphic" result="soft"><feFuncA type="linear" slope=".85"/></feComponentTransfer><feMerge result="mix"><feMergeNode in="soft"/><feMergeNode in="b2"/></feMerge><feComponentTransfer in="mix"><feFuncA type="linear" slope="1.1"/></feComponentTransfer></filter></defs></svg>
 <div class="atmosphere" aria-hidden="true"><div class="aureole"></div><canvas id="dust"></canvas></div>
 <main>
 <section class="block gallery" id="top" aria-labelledby="gallery-title">
@@ -46,15 +46,15 @@
       <span class="work-peek" aria-hidden="true"><svg viewBox="0 0 32 20" aria-hidden="true"><path d="M1.5 10C5.5 3.8 10.4 1.5 16 1.5S26.5 3.8 30.5 10C26.5 16.2 21.6 18.5 16 18.5S5.5 16.2 1.5 10Z"/><circle cx="16" cy="10" r="4.6"/><circle class="eye-glint" cx="17.6" cy="8.4" r="1.3"/></svg><span>рассмотреть поближе</span></span>
     </a>
   </div>
-  <p class="gallery-note"><a class="glass" href="https://t.me/dysphoblonde" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.8.1 2.1l4.5 1.4 1.7 5.4c.2.7 1.1.9 1.6.4l2.5-2.4 4.8 3.5c.6.5 1.5.1 1.7-.6L23 5.8c.2-1-.7-1.8-1.6-1.5Zm-11.7 10.8 8.6-7.6-7 8.3-.3 3.2-1.3-3.9Z"/></svg><span><b>Все работы из моего тг-канала</b><small>@dysphoblonde</small></span></a></p>
+  <p class="gallery-note"><a class="glass" href="https://t.me/dysphoblonde" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.4 4.3 2.9 11.5c-1 .4-1 1.8.1 2.1l4.5 1.4 1.7 5.4c.2.7 1.1.9 1.6.4l2.5-2.4 4.8 3.5c.6.5 1.5.1 1.7-.6L23 5.8c.2-1-.7-1.8-1.6-1.5Zm-11.7 10.8 8.6-7.6-7 8.3-.3 3.2-1.3-3.9Z"/></svg><span><b>все работы из моего тг-канала</b><small>@dysphoblonde</small></span></a></p>
 </section>
 </main>
-<footer><span>© dysphoblond</span><a href="#top">Наверх ↑</a></footer>
+<footer><span>© dysphoblond</span><a href="#top">наверх ↑</a></footer>
 <dialog id="work-viewer" class="viewer" aria-label="Просмотр работы">
   <div class="viewer-bg" aria-hidden="true"><i class="flow flow-x"></i><i class="flow flow-y"></i><i class="viewer-shade"></i></div>
   <figure class="viewer-figure"><img alt=""></figure>
-  <button class="viewer-close" aria-label="Закрыть">Закрыть ×</button>
+  <button class="viewer-close" aria-label="Закрыть">закрыть ×</button>
   <button class="viewer-nav viewer-prev" aria-label="Предыдущая работа">←</button>
   <button class="viewer-nav viewer-next" aria-label="Следующая работа">→</button>
 </dialog>
-<script src="i18n.js?v=18"></script><script src="design.js"></script><script src="atmosphere.js"></script></body></html>
+<script src="i18n.js?v=20"></script><script src="design.js"></script><script src="atmosphere.js"></script></body></html>

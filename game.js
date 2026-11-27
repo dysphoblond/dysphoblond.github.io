@@ -134,7 +134,7 @@
       try { localStorage.setItem('yp-flight-best', String(best)); } catch {}
     }
     bestView.textContent = best;
-    showPanel(score > 0 && score === best ? 'Новый рекорд' : 'Падение', { ru: 'Счёт {n}', vars: { n: score } }, 'Ещё раз');
+    showPanel(score > 0 && score === best ? 'Новый рекорд' : 'Падение', { ru: 'Счёт {n}', vars: { n: score } }, 'ещё раз');
   }
 
   function update(dt) {
@@ -286,7 +286,7 @@
   function hold() {
     if (state === 'play' && !paused) {
       paused = true;
-      showPanel('Пауза', { ru: 'Игра остановлена' }, 'Продолжить');
+      showPanel('Пауза', { ru: 'Игра остановлена' }, 'продолжить');
     }
   }
   if ('IntersectionObserver' in window) new IntersectionObserver(([entry]) => {

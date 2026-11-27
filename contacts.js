@@ -37,9 +37,9 @@
         field.remove();
       }
       const say = text => window.I18N ? I18N.set(button, text) : (button.textContent = text);
-      say('Почта скопирована');
+      say('почта скопирована');
       clearTimeout(button.timer);
-      button.timer = setTimeout(() => say('Скопировать почту'), 1800);
+      button.timer = setTimeout(() => say('скопировать почту'), 1800);
     });
   }
 })();

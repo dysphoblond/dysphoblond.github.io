@@ -83,7 +83,7 @@ document.querySelectorAll('.kwork-glass').forEach(panel => {
     toggle.setAttribute('aria-expanded', String(open));
     row.classList.toggle('is-open', open);
     more.inert = !open;
-    say(open ? 'Свернуть проекты' : 'Показать все проекты');
+    say(open ? 'свернуть проекты' : 'показать все проекты');
     if (open) {
       more.style.maxHeight = `${more.getBoundingClientRect().height}px`;
       more.classList.remove('is-collapsed');

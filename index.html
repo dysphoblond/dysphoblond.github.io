@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><title>Your Potential — портфолио</title><link rel="stylesheet" href="style.css?v=36"></head>
-<body><div class="atmosphere" aria-hidden="true"><div class="aureole"></div><canvas id="dust"></canvas></div>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><title>Your Potential — портфолио</title><link rel="stylesheet" href="style.css?v=42"><link rel="stylesheet" href="transition.css?v=1"></head>
+<body><svg class="sr" width="0" height="0" aria-hidden="true" focusable="false"><defs><!-- Лёгкая «пикселизация» заголовков: шрифт тот же, края букв ступеньками по 3 px, как растр постера. Берём по одной точке из каждой клетки 3×3, растягиваем её на всю клетку и смешиваем с исходным гладким текстом примерно пополам — ступеньки видны, но мягко --><filter id="pixel-title" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB"><feFlood x="1" y="1" width="1" height="1" flood-color="#fff"/><feComposite width="3" height="3"/><feTile result="grid"/><feComposite in="SourceGraphic" in2="grid" operator="in"/><feMorphology operator="dilate" radius="1" result="blocks"/><feComponentTransfer in="blocks" result="b2"><feFuncA type="linear" slope=".5"/></feComponentTransfer><feComponentTransfer in="SourceGraphic" result="soft"><feFuncA type="linear" slope=".78"/></feComponentTransfer><feMerge result="mix"><feMergeNode in="soft"/><feMergeNode in="b2"/></feMerge><feComponentTransfer in="mix"><feFuncA type="linear" slope="1.12"/></feComponentTransfer></filter><!-- Для текста помельче (30–50 px): ступенька 2 px, иначе буквы рассыпаются --><filter id="pixel-text" x="0" y="0" width="1" height="1" color-interpolation-filters="sRGB"><feFlood x="0" y="0" width="1" height="1" flood-color="#fff"/><feComposite width="2" height="2"/><feTile result="grid"/><feComposite in="SourceGraphic" in2="grid" operator="in"/><feConvolveMatrix order="2" kernelMatrix="1 1 1 1" divisor="1" targetX="1" targetY="1" edgeMode="none" preserveAlpha="false" result="blocks"/><feComponentTransfer in="blocks" result="b2"><feFuncA type="linear" slope=".42"/></feComponentTransfer><feComponentTransfer in="SourceGraphic" result="soft"><feFuncA type="linear" slope=".85"/></feComponentTransfer><feMerge result="mix"><feMergeNode in="soft"/><feMergeNode in="b2"/></feMerge><feComponentTransfer in="mix"><feFuncA type="linear" slope="1.1"/></feComponentTransfer></filter></defs></svg><div class="atmosphere" aria-hidden="true"><div class="aureole"></div><canvas id="dust"></canvas></div>
 <header class="topbar" id="topbar">
   <a class="topbar-logo" href="#top" aria-label="Наверх"><svg viewBox="0 356 1280 484" aria-hidden="true"><image href="complogo.png" width="1280" height="1280"/></svg></a>
   <nav class="topbar-nav" aria-label="Разделы сайта">
@@ -11,7 +11,7 @@
 <main>
 <section id="top" class="hero" aria-labelledby="hero-title">
   <h1 id="hero-title" class="sr">Your Potential — портфолио разработки</h1>
-  <div class="edition"><button id="fx" aria-pressed="true" aria-label="Анимация">FX ON</button><div class="lang" role="group" aria-label="Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a class="order-button" href="#contacts"><span class="order-text">Заказать</span></a></div>
+  <div class="edition"><button id="fx" aria-pressed="true" aria-label="Анимация">FX ON</button><div class="lang" role="group" aria-label="Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div><a class="order-button" href="#contacts"><span class="order-text">заказать</span></a></div>
   <div class="poster-stage">
   <!-- Слой 0: живые пиксели (облака, растр, контур логотипа) — рисует pixels.js -->
   <canvas class="poster-pixels" aria-hidden="true"></canvas>
@@ -112,7 +112,7 @@
         <span class="project-text">Сайт мастерской люксовых активных колонок. Структура как у производителей hi-end акустики: выпадающие меню, фото каждой модели на весь экран, архив по годам. История мастерской — поверх ночного Петербурга кисти Алексея Боголюбова. Интерактивный разрез, график АЧХ и карта залов.</span>
         <span class="project-stack"><i>HTML</i><i>CSS</i><i>JavaScript</i><i>SVG</i><i>Canvas</i><i>без фреймворков</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="projects/dysph-audio/index.html">Открыть сайт</a>
+          <a class="project-btn project-btn-main" href="projects/dysph-audio/index.html">открыть сайт</a>
         </div>
       </div>
     </div>
@@ -124,7 +124,7 @@
         <span class="project-text">Сайт застройщика загородных посёлков в тёмной строгой стилистике. Слайдер посёлков, подбор дома по фильтрам из общей базы, карточки посёлков со сводкой по спальням, способы покупки, калькулятор, интерактивная планировка и новости.</span>
         <span class="project-stack"><i>HTML</i><i>CSS</i><i>JavaScript</i><i>SVG</i><i>без фреймворков</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="projects/dysph-house/index.html">Открыть сайт</a>
+          <a class="project-btn project-btn-main" href="projects/dysph-house/index.html">открыть сайт</a>
         </div>
       </div>
     </div>
@@ -136,7 +136,7 @@
         <span class="project-text">Бот учёта трат. Пишешь «кофе 300» или «такси 450 вчера» — текстом или голосом, а он сам определяет категорию и запоминает правки. По команде /month рисует график за месяц и сравнивает с прошлым. Работает на Telegram Serverless: без своего сервера, PNG-график рисуется собственным кодировщиком.</span>
         <span class="project-stack"><i>JavaScript</i><i>Telegram Serverless</i><i>SQLite</i><i>Yandex SpeechKit</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="https://t.me/financialtrackerTEST_bot" target="_blank" rel="noopener">Открыть бота</a>
+          <a class="project-btn project-btn-main" href="https://t.me/financialtrackerTEST_bot" target="_blank" rel="noopener">открыть бота</a>
         </div>
       </div>
     </div>
@@ -148,7 +148,7 @@
         <span class="project-text">Магазин генеративных постеров внутри Telegram. Сами постеры рисует код — шум, искажение координат и зерно. Размер, бумага и рама меняют цену и превью, корзина хранится в облаке Telegram. Заказ приходит владельцу в бот с кнопками статусов, цены пересчитывает сервер.</span>
         <span class="project-stack"><i>JavaScript</i><i>Telegram Mini Apps</i><i>Telegram Serverless</i><i>SQLite</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="https://t.me/placatsshopTEST_bot" target="_blank" rel="noopener">Открыть бота</a>
+          <a class="project-btn project-btn-main" href="https://t.me/placatsshopTEST_bot" target="_blank" rel="noopener">открыть бота</a>
         </div>
       </div>
     </div>
@@ -176,17 +176,20 @@
         <b class="project-title">Новый проект</b>
         <span class="mock-lines" aria-hidden="true"><i></i><i></i><i></i></span>
         <span class="project-stack" aria-hidden="true"><i class="mock-chip"></i><i class="mock-chip"></i><i class="mock-chip"></i></span>
-        <div class="project-actions"><span class="project-btn project-btn-main is-disabled" aria-disabled="true">Скоро</span></div>
+        <div class="project-actions"><span class="project-btn project-btn-main is-disabled" aria-disabled="true">скоро</span></div>
       </div>
     </div>
   </div>
-  <div class="projects-toggle-row"><button class="projects-toggle" type="button" aria-expanded="false" aria-controls="projects-more"><span class="projects-toggle-arrow" aria-hidden="true">↓</span><span class="sr projects-toggle-label">Показать все проекты</span></button></div>
+  <div class="projects-toggle-row"><button class="projects-toggle" type="button" aria-expanded="false" aria-controls="projects-more"><span class="projects-toggle-arrow" aria-hidden="true">↓</span><span class="sr projects-toggle-label">показать все проекты</span></button></div>
 </section>
 <aside class="kwork" aria-label="Заказ на Kwork">
   <div class="kwork-blobs" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="kwork-glass">
-    <p>Нужен сайт, бот или дизайн? Напишите мне на Kwork — обсудим задачу и сроки.</p>
-    <a class="kwork-button" href="https://kwork.ru/user/dysphoblond" target="_blank" rel="noopener">Написать на Kwork</a>
+    <div class="kwork-words">
+      <p>Сайты, Telegram-боты и плакаты. Дизайн и код в одних руках.</p>
+      <p>Который к тому же и выглядит, и работает</p>
+    </div>
+    <a class="kwork-button" href="https://kwork.ru/user/dysphoblond" target="_blank" rel="noopener">написать на Kwork</a>
   </div>
 </aside>
 <section id="more" class="block" aria-labelledby="more-title">
@@ -201,7 +204,7 @@
         <span class="project-text">Панель администратора стоматологии: расписание четырёх кресел, запись пациента за три поля, карточка с зубной формулой. UI-кит с состояниями кнопок и полей, экраны 1440, 834 и 390, кликабельный прототип с модальными окнами и выпадающими списками.</span>
         <span class="project-stack"><i>UI-кит</i><i>3 разрешения</i><i>Прототип</i><i>HTML · CSS · JS</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="projects/emal-crm/index.html">Открыть макет</a>
+          <a class="project-btn project-btn-main" href="projects/emal-crm/index.html">открыть макет</a>
         </div>
       </div>
     </div>
@@ -213,7 +216,7 @@
         <span class="project-text">Мини-приложение для пациентов той же клиники: запись в три шага, перенос и отмена, не выходя из чата. Нативные кнопки Telegram, тема клиента и виброотклик. UI-кит, экраны 360, 390 и 768, прототип с переходами и нижней шторкой.</span>
         <span class="project-stack"><i>UI-кит</i><i>3 разрешения</i><i>Прототип</i><i>HTML · CSS · JS</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="projects/emal-app/index.html">Открыть макет</a>
+          <a class="project-btn project-btn-main" href="projects/emal-app/index.html">открыть макет</a>
         </div>
       </div>
     </div>
@@ -225,7 +228,7 @@
         <span class="project-text">Генератор, которым сделаны постеры Placats shop. Шум Перлина, искажение координат и зерно — ползунки меняют форму и палитру, превью перерисовывается сразу. Готовый постер скачивается в PNG до 4800 px, а параметры хранятся в ссылке.</span>
         <span class="project-stack"><i>JavaScript</i><i>Canvas</i><i>Web Workers</i><i>без библиотек</i></span>
         <div class="project-actions">
-          <a class="project-btn project-btn-main" href="projects/placats-lab/index.html">Открыть генератор</a>
+          <a class="project-btn project-btn-main" href="projects/placats-lab/index.html">открыть генератор</a>
         </div>
       </div>
     </div>
@@ -241,7 +244,7 @@
       <p class="game-title">Dyspphy fly</p>
       <p class="game-text"></p>
       <p class="game-hint">взмах — пробел · клик · тап</p>
-      <button class="game-start" type="button">Играть</button>
+      <button class="game-start" type="button">играть</button>
       <p class="game-best"><span class="game-best-label">рекорд</span> <b class="game-best-value">0</b></p>
     </div>
   </div>
@@ -252,7 +255,7 @@
   <div class="reach">
     <div class="reach-mail">
       <a href="mailto:dysphoblond@gmail.com">dysphoblond@gmail.com</a>
-      <button class="reach-copy" type="button" data-copy="dysphoblond@gmail.com">Скопировать почту</button>
+      <button class="reach-copy" type="button" data-copy="dysphoblond@gmail.com">скопировать почту</button>
     </div>
     <!-- Kwork и Telegram — карточки, которые «проваливаются» под курсором (contacts.js) -->
     <div class="reach-cards">
@@ -273,12 +276,12 @@
     </ul>
   </div>
 </section>
-</main><footer><span>© dysphoblond</span><a href="#top">Наверх ↑</a></footer>
+</main><footer><span>© dysphoblond</span><a href="#top">наверх ↑</a></footer>
 <dialog id="work-viewer" class="viewer" aria-label="Просмотр работы">
   <div class="viewer-bg" aria-hidden="true"><i class="flow flow-x"></i><i class="flow flow-y"></i><i class="viewer-shade"></i></div>
   <figure class="viewer-figure"><img alt=""></figure>
-  <button class="viewer-close" aria-label="Закрыть">Закрыть ×</button>
+  <button class="viewer-close" aria-label="Закрыть">закрыть ×</button>
   <button class="viewer-nav viewer-prev" aria-label="Предыдущая работа">←</button>
   <button class="viewer-nav viewer-next" aria-label="Следующая работа">→</button>
 </dialog>
-<script src="i18n.js?v=18"></script><script src="sections.js?v=4"></script><script src="design.js"></script><script src="atmosphere.js"></script><script src="pixels.js?v=3"></script><script src="words.js"></script><script src="nav.js?v=5"></script><script src="game.js?v=3"></script><script src="contacts.js?v=3"></script></body></html>
+<script src="i18n.js?v=20"></script><script src="sections.js?v=5"></script><script src="design.js"></script><script src="atmosphere.js"></script><script src="pixels.js?v=3"></script><script src="words.js"></script><script src="nav.js?v=7"></script><script src="game.js?v=4"></script><script src="contacts.js?v=4"></script><script src="chain.js?v=3"></script></body></html>

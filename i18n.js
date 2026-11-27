@@ -10,7 +10,7 @@
     'Your Potential — портфолио': 'Your Potential — portfolio',
     'Плакаты и Дизайн: галерея — Your Potential': 'Posters & Design: gallery — Your Potential',
     // Обложка
-    'Заказать': 'Order', 'Нажми на крюк': 'Pull the hook', 'Потянуть за крюк — к портфолио': 'Pull the hook — to the portfolio',
+    'заказать': 'order', 'Нажми на крюк': 'Pull the hook', 'Потянуть за крюк — к портфолио': 'Pull the hook — to the portfolio',
     'Постер Your Potential с подвесным крюком': 'Your Potential poster with a hanging hook',
     'Перейти к портфолио': 'Go to the portfolio', 'Анимация': 'Animation', 'Язык': 'Language',
     'Наверх': 'Back to top', 'Разделы сайта': 'Site sections', 'На главную': 'To the home page',
@@ -27,29 +27,30 @@
     'Хром: чёрно-белая абстракция из жидких хромовых линий и зерна': 'Chrome: a black-and-white abstraction of liquid chrome lines and grain',
     'Крыло: красно-белое крыло на кружевном фоне с жёлтыми плашками и красным текстом про вселенную dysphoblonde': 'Wing: a red-and-white wing on a lace background with yellow blocks and red text about the dysphoblonde universe',
     'Хром': 'Chrome', 'Крыло': 'Wing',
-    'Просмотр работы': 'Artwork viewer', 'Закрыть': 'Close', 'Закрыть ×': 'Close ×',
+    'Просмотр работы': 'Artwork viewer', 'Закрыть': 'Close', 'закрыть ×': 'close ×',
     'Предыдущая работа': 'Previous work', 'Следующая работа': 'Next work',
     '← на главную': '← back to home', 'место под постер': 'poster coming soon',
-    'Все работы из моего тг-канала': 'All works from my Telegram channel',
+    'все работы из моего тг-канала': 'all works from my Telegram channel',
     // Проекты
     'Лендинг · концепт': 'Landing page · concept', 'Сайт застройщика · концепт': 'Developer website · concept', 'открыть сайт ↗': 'open site ↗', 'без фреймворков': 'no frameworks',
     'Сайт застройщика загородных посёлков в тёмной строгой стилистике. Слайдер посёлков, подбор дома по фильтрам из общей базы, карточки посёлков со сводкой по спальням, способы покупки, калькулятор, интерактивная планировка и новости.': 'A website for a developer of country-house villages, in a strict dark style. A village slider, home search with filters over a shared database, village cards with a bedroom summary, ways to buy, a cost calculator, an interactive floor plan and news.',
     'Telegram-бот': 'Telegram bot', 'открыть бота в Telegram ↗': 'open the bot in Telegram ↗',
     // Кнопки карточек
-    'Открыть сайт': 'Open site', 'Открыть бота': 'Open the bot', 'Открыть макет': 'Open mockup', 'Макет · UI-кит и прототип': 'Mockup · UI kit and prototype', 'Макет · Telegram Mini App': 'Mockup · Telegram Mini App', 'Эмаль — запись в Telegram': 'Emal — booking in Telegram', 'UI-кит': 'UI kit', '3 разрешения': '3 breakpoints', 'Прототип': 'Prototype', 'Панель администратора стоматологии: расписание четырёх кресел, запись пациента за три поля, карточка с зубной формулой. UI-кит с состояниями кнопок и полей, экраны 1440, 834 и 390, кликабельный прототип с модальными окнами и выпадающими списками.': 'A dental clinic admin panel: a four-chair day schedule, booking a patient in three fields, a patient card with a dental chart. A UI kit with button and input states, screens at 1440, 834 and 390, a clickable prototype with modals and dropdowns.', 'Мини-приложение для пациентов той же клиники: запись в три шага, перенос и отмена, не выходя из чата. Нативные кнопки Telegram, тема клиента и виброотклик. UI-кит, экраны 360, 390 и 768, прототип с переходами и нижней шторкой.': 'A mini app for patients of the same clinic: booking in three steps, rescheduling and cancelling without leaving the chat. Native Telegram buttons, client theme and haptics. A UI kit, screens at 360, 390 and 768, a prototype with transitions and a bottom sheet.', 'Архив моделей ↗': 'Model archive ↗', 'Сайт мастерской люксовых активных колонок. Структура как у производителей hi-end акустики: выпадающие меню, фото каждой модели на весь экран, архив по годам. История мастерской — поверх ночного Петербурга кисти Алексея Боголюбова. Интерактивный разрез, график АЧХ и карта залов.': 'A website for a workshop making luxury active speakers. Structured like hi-end audio makers’ sites: dropdown menus, a full-screen photo for each model, a year-by-year archive. The workshop story sits over a night view of St. Petersburg painted by Alexey Bogolyubov. Interactive cutaway, frequency response chart and showroom map.', 'Подбор дома ↗': 'Find a home ↗', 'Открыть бота ↗': 'Open the bot ↗',
-    'Демо в браузере ↗': 'Browser demo ↗', 'Открыть генератор': 'Open the generator',
+    'открыть сайт': 'open site', 'открыть бота': 'open the bot', 'открыть макет': 'open mockup', 'Макет · UI-кит и прототип': 'Mockup · UI kit and prototype', 'Макет · Telegram Mini App': 'Mockup · Telegram Mini App', 'Эмаль — запись в Telegram': 'Emal — booking in Telegram', 'UI-кит': 'UI kit', '3 разрешения': '3 breakpoints', 'Прототип': 'Prototype', 'Панель администратора стоматологии: расписание четырёх кресел, запись пациента за три поля, карточка с зубной формулой. UI-кит с состояниями кнопок и полей, экраны 1440, 834 и 390, кликабельный прототип с модальными окнами и выпадающими списками.': 'A dental clinic admin panel: a four-chair day schedule, booking a patient in three fields, a patient card with a dental chart. A UI kit with button and input states, screens at 1440, 834 and 390, a clickable prototype with modals and dropdowns.', 'Мини-приложение для пациентов той же клиники: запись в три шага, перенос и отмена, не выходя из чата. Нативные кнопки Telegram, тема клиента и виброотклик. UI-кит, экраны 360, 390 и 768, прототип с переходами и нижней шторкой.': 'A mini app for patients of the same clinic: booking in three steps, rescheduling and cancelling without leaving the chat. Native Telegram buttons, client theme and haptics. A UI kit, screens at 360, 390 and 768, a prototype with transitions and a bottom sheet.', 'Архив моделей ↗': 'Model archive ↗', 'Сайт мастерской люксовых активных колонок. Структура как у производителей hi-end акустики: выпадающие меню, фото каждой модели на весь экран, архив по годам. История мастерской — поверх ночного Петербурга кисти Алексея Боголюбова. Интерактивный разрез, график АЧХ и карта залов.': 'A website for a workshop making luxury active speakers. Structured like hi-end audio makers’ sites: dropdown menus, a full-screen photo for each model, a year-by-year archive. The workshop story sits over a night view of St. Petersburg painted by Alexey Bogolyubov. Interactive cutaway, frequency response chart and showroom map.', 'Подбор дома ↗': 'Find a home ↗', 'Открыть бота ↗': 'Open the bot ↗',
+    'Демо в браузере ↗': 'Browser demo ↗', 'открыть генератор': 'open the generator',
     // Placats shop и Placats Lab
     'Telegram Mini App · демо': 'Telegram Mini App · demo',
     'Магазин генеративных постеров внутри Telegram. Сами постеры рисует код — шум, искажение координат и зерно. Размер, бумага и рама меняют цену и превью, корзина хранится в облаке Telegram. Заказ приходит владельцу в бот с кнопками статусов, цены пересчитывает сервер.': 'A shop of generative posters inside Telegram. The posters themselves are drawn by code — noise, domain warping and grain. Size, paper and frame change the price and the preview, and the cart lives in Telegram’s cloud. Orders reach the owner in the bot with status buttons, and the server recalculates every price.',
     'Генеративная графика · инструмент': 'Generative graphics · tool', 'без библиотек': 'no libraries',
     'Генератор, которым сделаны постеры Placats shop. Шум Перлина, искажение координат и зерно — ползунки меняют форму и палитру, превью перерисовывается сразу. Готовый постер скачивается в PNG до 4800 px, а параметры хранятся в ссылке.': 'The generator behind the Placats shop posters. Perlin noise, domain warping and grain — sliders change the shape and the palette, and the preview redraws instantly. The finished poster downloads as a PNG up to 4800 px, and the settings live in the link.',
     'Бот учёта трат. Пишешь «кофе 300» или «такси 450 вчера» — текстом или голосом, а он сам определяет категорию и запоминает правки. По команде /month рисует график за месяц и сравнивает с прошлым. Работает на Telegram Serverless: без своего сервера, PNG-график рисуется собственным кодировщиком.': 'An expense-tracking bot. Type “coffee 300” or “taxi 450 yesterday” — as text or by voice — and it picks the category itself and remembers your corrections. The /month command draws a chart for the month and compares it with the previous one. It runs on Telegram Serverless: no server of its own, and the PNG chart is drawn by a custom encoder.',
-    'скоро': 'soon', 'в работе': 'in progress', 'Скоро · в работе': 'Coming soon · in progress', 'Новый проект': 'New project', 'Скоро': 'Soon',
-    'Проект в работе': 'Project in progress', 'Показать все проекты': 'Show all projects', 'Свернуть проекты': 'Collapse projects',
+    'скоро': 'soon', 'в работе': 'in progress', 'Скоро · в работе': 'Coming soon · in progress', 'Новый проект': 'New project',
+    'Проект в работе': 'Project in progress', 'показать все проекты': 'show all projects', 'свернуть проекты': 'collapse projects',
     // Kwork
     'Заказ на Kwork': 'Order on Kwork',
-    'Нужен сайт, бот или дизайн? Напишите мне на Kwork — обсудим задачу и сроки.': 'Need a website, a bot or a design? Message me on Kwork — we’ll talk through the task and the timeline.',
-    'Написать на Kwork': 'Message me on Kwork',
+    'Сайты, Telegram-боты и плакаты. Дизайн и код в одних руках.': 'Websites, Telegram bots and posters. Design and code in one pair of hands.',
+    'Который к тому же и выглядит, и работает': 'And it both looks good and actually works',
+    'написать на Kwork': 'message me on Kwork',
     // Пустые разделы
     'Раздел в работе': 'Coming soon',
     // Игра
@@ -57,15 +58,15 @@
     'Новый рекорд': 'New best', 'Падение': 'Crashed', 'Счёт {n}. Нажми, чтобы ещё раз': 'Score {n}. Tap to try again',
     'Пауза': 'Paused', 'Нажми, чтобы продолжить': 'Tap to continue',
     'Лети сквозь колонны': 'Fly through the pillars', 'взмах — пробел · клик · тап': 'flap — space · click · tap',
-    'Играть': 'Play', 'Ещё раз': 'Play again', 'Продолжить': 'Resume', 'Счёт {n}': 'Score {n}', 'Игра остановлена': 'Game paused',
+    'играть': 'play', 'ещё раз': 'play again', 'продолжить': 'resume', 'Счёт {n}': 'Score {n}', 'Игра остановлена': 'Game paused',
     'Мини-игра dyspphy fly. Кнопка «Играть» начинает игру, пробел, клик или касание — взмах': 'Dyspphy fly mini-game. The Play button starts the game; space, click or tap to flap',
     // Контакты
     'Почта': 'Email', 'написать письмо ↗': 'send an email ↗', 'копировать': 'copy', 'скопировано ✓': 'copied ✓',
     'Заказать на Kwork': 'Order on Kwork', 'безопасная сделка ↗': 'safe deal ↗',
     'Написать в личку': 'Message me directly', 'личные сообщения ↗': 'direct messages ↗',
-    'Скопировать почту': 'Copy email', 'Почта скопирована': 'Email copied', 'заказ с безопасной сделкой': 'order with a safe deal', '@dysphoblond, личные сообщения': '@dysphoblond, direct messages',
+    'скопировать почту': 'copy email', 'почта скопирована': 'email copied', 'заказ с безопасной сделкой': 'order with a safe deal', '@dysphoblond, личные сообщения': '@dysphoblond, direct messages',
     // Соцсети и футер
-    'Telegram-канал': 'Telegram channel', 'доски и референсы': 'boards & references', 'Наверх ↑': 'Back to top ↑'
+    'Telegram-канал': 'Telegram channel', 'доски и референсы': 'boards & references', 'наверх ↑': 'back to top ↑'
   };
   // Элементы, чей текст переводится целиком
   const TEXT = ['.project-shot-mock span', '.project-mock .project-title', '.projects-toggle-label', '#hero-title', '.hint-text', '.order-text', '.topbar-nav a', '.block h2', '.work-peek > span', '.work-more',

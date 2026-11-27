@@ -359,3 +359,44 @@ small,.project-info small,.glass small,.game-hint,.game-best,.work-peek,.work-ca
 
 /* Мелкий текст над названиями проектов — со строчной буквы, как тихая подпись */
 .project-info small{text-transform:lowercase}
+
+/* Голос автора в строке Kwork: первая фраза крупно шрифтом заголовков, вторая — тише */
+.kwork-words{position:relative;display:grid;gap:8px;max-width:40em}
+.kwork-words p:first-child{font:normal clamp(22px,2.6vw,34px)/1.2 Georgia,serif;letter-spacing:-.01em}
+.kwork-words p+p{font-size:clamp(16px,1.6vw,20px);color:#f1f0ecb3;text-shadow:none}
+
+/* Цепочка вдоль страницы (chain.js): продолжение цепочки крюка с обложки. Пиксельные звенья, как растр постера.
+   Видна только «размотанная» часть до --reach; у каждого раздела — звено-узел, загорается, когда цепочка до него дошла */
+main{position:relative;isolation:isolate}
+.chain{position:absolute;right:max(6px,calc(var(--pad)/2 - 4px));z-index:2;width:8px;pointer-events:none}
+.chain-line{position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='14' shape-rendering='crispEdges'%3E%3Cpath fill='%238c8c8c' fill-rule='evenodd' d='M2 0h4v1h1v6h-1v1h-4v-1h-1v-6h1zM3 2v4h2v-4z'/%3E%3Crect x='3' y='7' width='2' height='7' fill='%235a5a5a'/%3E%3C/svg%3E") 0 0/8px 14px repeat-y;clip-path:inset(0 0 calc(100% - var(--reach,0px)) 0);image-rendering:pixelated}
+.chain-node{position:absolute;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' shape-rendering='crispEdges'%3E%3Cpath fill='%23f1f0ec' fill-rule='evenodd' d='M5 0h4v1h2v1h1v2h1v6h-1v2h-1v1h-2v1h-4v-1h-2v-1h-1v-2h-1v-6h1v-2h1v-1h2zM5 3v1h-1v6h1v1h4v-1h1v-6h-1v-1z'/%3E%3C/svg%3E") 0 0/14px 14px;opacity:0;transform:scale(.6);transition:opacity .4s,transform .45s cubic-bezier(.3,1.5,.45,1)}
+.chain-node.is-lit{opacity:.85;transform:none}
+.fx-off .chain-node{transition:none}
+@media(max-width:620px){.chain{right:4px;width:6px}.chain-line{background-size:6px 10.5px}.chain-node{width:10px;height:10px;margin:-5px 0 0 -5px;background-size:10px 10px}}
+
+/* Цепочка v2 — как на постере: звенья нарисованы клетками 3 px с растровым шумом (assets/chain-link.png),
+   кольца у разделов и крюк на конце вырезаны прямо из постера. Масштаб 2/3: клетка постера = 2 px экрана */
+.chain{right:calc(var(--pad)/2 - 7px);width:14px}
+.chain-line{background:url("assets/chain-link.png?v=1") 0 0/14px 28px repeat-y;image-rendering:pixelated;opacity:.9}
+.chain-node{width:23px;height:24px;margin:-12px 0 0 -11.5px;background:url("assets/chain-ring.png?v=1") 0 0/23px 24px no-repeat;image-rendering:pixelated}
+.chain-node.is-lit{opacity:1}
+.chain-hook{position:absolute;top:calc(var(--reach,0px) - 4px);left:calc(50% - 44.3px);width:64px;height:113px;background:url("assets/chain-hook.png?v=1") 0 0/64px 113px no-repeat;image-rendering:pixelated;transform-origin:44.3px 0}
+@media(prefers-reduced-motion:no-preference){.chain-hook{animation:chain-sway 3.8s ease-in-out infinite alternate}}
+@keyframes chain-sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@media(max-width:620px){
+  .chain{right:calc(var(--pad)/2 - 3.5px);width:7px}
+  .chain-line{background-size:7px 14px}
+  .chain-node{width:12px;height:12px;margin:-6px 0 0 -6px;background-size:12px 12px}
+  .chain-hook{left:calc(50% - 22.2px);width:32px;height:57px;background-size:32px 57px;transform-origin:22.2px 0}
+}
+/* Крюк качается у самого края — не даём ему вызвать горизонтальную прокрутку (на старых iOS без overflow:clip — запасной вариант) */
+main{overflow-x:hidden}@supports(overflow:clip){main{overflow-x:clip}}
+
+/* Заголовки разделов и галереи — чуть-чуть пиксельные (фильтр #pixel-title в начале страницы): шрифт Georgia тот же,
+   края букв идут ступеньками по 3 px, как растр на постере. На узких экранах заголовки мельче, поэтому ступенька та же,
+   но заметнее — оставляем, это часть стиля */
+.block h2,.gallery-title{filter:url(#pixel-title)}
+/* Тот же эффект везде, где набрано Georgia: крупное — ступенька 3 px, текст помельче — 2 px */
+h2,.gallery-title,.reach-mail a{filter:url(#pixel-title)}
+.project-title,.reach-card b,.kwork-words p:first-child,.game-title,.game-score,.work-more,.tile-link b,.reach-list b{filter:url(#pixel-text)}
